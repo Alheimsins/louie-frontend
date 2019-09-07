@@ -1,31 +1,67 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+   <v-app-bar
+      color="#a2ddcf"
+      app
+      dark
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>LOUIE</v-toolbar-title>
+      <div class="flex-grow-1"></div>
+
+      <v-menu
+        left
+        bottom
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            @click="() => {}"
+          >
+
+            <v-list-item-title>Logg ut</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+    <!-- Content -->
+    <v-content>
+      <router-view />
+    </v-content>
+
+    <!-- Snackbar -->
+    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : 'primary'" :bottom="true">
+      {{snackbar.message}}
+    </v-snackbar>
+
+  </v-app>
 </template>
 
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: 'App',
+  components: {
+  },
+  computed: mapState([
+    'snackbar'
+  ])
+}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+.v-data-table tbody tr.expanded.expanded__content {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+tr:hover {
+  cursor: pointer;
 }
 </style>
