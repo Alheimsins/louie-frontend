@@ -59,6 +59,9 @@ export default new Vuex.Store({
         context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
         context.commit('SET_LOADING', false)
       }
+    },
+    SEND_WARNING: async (context, payload) => {
+      context.commit('SET_SNACKBAR', { msg: 'Varsel sent' })
     }
   }
 })

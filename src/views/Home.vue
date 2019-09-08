@@ -204,7 +204,7 @@
 
             <v-btn
               text
-              @click="dialog = false"
+              @click="sendWarning"
             >
             Send
             </v-btn>
@@ -265,6 +265,10 @@ export default {
       const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, payload)
       this.pdfFile = data
       this.previewDialog = true
+    },
+    sendWarning () {
+      this.$store.dispatch('SEND_WARNING')
+      this.dialog = false
     }
   },
   created () {
