@@ -84,7 +84,7 @@
                   tile
                   class="rounded-card"
                 >
-                  <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                  <v-img :src="student.imageUrl"></v-img>
                 </v-avatar>
               </v-col>
               <v-col>
@@ -132,7 +132,10 @@
 
             <v-flex>
               <v-row>
-
+              <v-tabs light color="white">
+                <v-tab>Varsel</v-tab>
+                <v-tab>Logg</v-tab>
+              </v-tabs>
                 <!-- Type varsel -->
                 <v-col>
                   <p class="dialog-title">Type varsel</p>
@@ -143,9 +146,9 @@
                   </v-radio-group>
 
                   <div v-if="warningType === 'fag'">
-                    <p class="dialog-title">Velg fag varselet gjelder</p>
-                    <div v-for="classes in selectedStudent.classes" :key="classes">
-                      <v-checkbox hide-details v-model="selectedFag" :label="classes" :value="classes"></v-checkbox>
+                    <p class="dialog-title">Varselet gjelder</p>
+                    <div v-for="fag in student.classes" :key="fag">
+                      <v-checkbox hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
                     </div>
                   </div>
                 </v-col>
@@ -255,6 +258,7 @@ export default {
   methods: {
     showDialog (item) {
       this.selectedStudent = item
+      this.$store.dispatch('GET_STUDENT', item.uid)
       this.dialog = true
     },
     async openPreview () {
@@ -268,6 +272,7 @@ export default {
   },
   computed: mapState([
     'students',
+    'student',
     'loading'
   ]),
   components: { pdf }
@@ -297,5 +302,8 @@ export default {
 .dialog-title {
   font-size: 1.25rem;
   text-transform: uppercase;
+}
+.theme--light.v-tabs > .v-tabs-bar {
+  background-color: transparent !important;
 }
 </style>
