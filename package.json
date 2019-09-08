@@ -92,6 +92,11 @@
     "> 1%",
     "last 2 versions"
   ],
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",

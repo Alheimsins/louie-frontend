@@ -19,7 +19,7 @@
       >
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
+            <v-icon>mdi-account</v-icon>
           </v-btn>
         </template>
         <v-list>
@@ -62,7 +62,9 @@ export default {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-
+tr td:first-child {
+  border-left: 8px transparent solid;
+}
 tr:hover td:first-child {
   cursor: pointer;
   border-left: 8px #F47F97 solid;
