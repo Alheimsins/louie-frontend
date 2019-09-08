@@ -1,0 +1,67 @@
+{
+  "data": {
+    "studentName": "Birger Bollerud",
+    "schoolName": "Bamble vgs. avd Grasmyr",
+    "date": "1971-11-18"
+  },
+  "template": {
+    "header": [
+      {
+        "fontSize": 12,
+        "text": "${studentName}",
+        "startAt": {
+          "x": 100,
+          "y": 50
+        }
+      },
+      {
+        "fontSize": 12,
+        "text": "/${schoolName}",
+        "startAt": {
+          "x": 350,
+          "y": 50
+        }
+      },
+      {
+        "fontSize": 12,
+        "text": "Vår dato: ${date}"
+      },
+      {
+        "fontSize": 12,
+        "text": "Unntatt offentlighet iht Offl §13 jfr Fvl §13"
+      },
+      {
+        "fontSize": 20,
+        "text": "Varsel om mulig nedsatt karakter i orden",
+        "startAt": {
+          "x": 100,
+          "y": 120
+        }
+      }
+    ],
+    "body": [
+      {
+        "fontSize": 14,
+        "text": "Du har vært slem. Fy!",
+        "startAt": {
+          "x": 100,
+          "y": 150
+        }
+      },
+      {
+        "fontSize": 14,
+        "text": "Ikke vær slem"
+      }
+    ],
+    "footer": [
+      {
+        "fontSize": 12,
+        "text": "Alheimsins International School of Awesomeness",
+        "startAt": {
+          "x": 100,
+          "y": 700
+        }
+      }
+    ]
+  }
+}

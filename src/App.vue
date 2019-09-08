@@ -9,6 +9,10 @@
       <v-toolbar-title>LOUIE</v-toolbar-title>
       <div class="flex-grow-1"></div>
 
+      <v-btn icon>
+        <v-icon>mdi-help-circle</v-icon>
+      </v-btn>
+
       <v-menu
         left
         bottom
@@ -18,12 +22,10 @@
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>
-
         <v-list>
           <v-list-item
             @click="() => {}"
           >
-
             <v-list-item-title>Logg ut</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -63,5 +65,7 @@ export default {
 
 tr:hover {
   cursor: pointer;
+  background: #F47F97 !important;
+  color: white !important;
 }
 </style>

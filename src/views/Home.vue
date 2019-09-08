@@ -77,7 +77,7 @@
           </td>
         </template>
 
-        <v-alert slot="no-data" :value="true" v-if="loading !== true" color="error" icon="mdi-warning">
+        <v-alert slot="no-data" :value="true" v-if="loading !== true" color="error" icon="mdi-alert">
           Du har ikke tilgang til noen elever. Ta kontakt med administrativt personale på din skole.
         </v-alert>
 
@@ -195,10 +195,36 @@
 
             <v-btn
               text
-              @click="dialog = false"
+              @click="openPreview()"
             >
             Forhåndsvisning
             </v-btn>
+
+
+            <v-dialog
+              v-model="previewDialog"
+              fullscreen
+              hide-overlay
+              transition="dialog-bottom-transition"
+            >
+              <v-card>
+                <v-toolbar fixed color="#F47F97">
+                  <v-btn @click="previewDialog = false" icon text>
+                    <v-icon dark>mdi-close</v-icon>
+                  </v-btn>
+                  <v-toolbar-title>
+                    Forhåndsvisning
+                  </v-toolbar-title>
+                </v-toolbar>
+                <div class="wrapper" ref="pdfview">
+                  <pdf
+                    style="width: 100%;"
+                    :src="pdfFile"
+                    @page-loaded="currentPage = $event"
+                  ></pdf>
+                </div>
+              </v-card>
+            </v-dialog>
 
             <v-btn
               text
@@ -216,6 +242,9 @@
 </template>
 
 <script>
+import config from '../../config'
+import pdf from 'vue-pdf'
+import payload from '../assets/template-data.json'
 import { mapState } from 'vuex'
 
 const headers = [
@@ -263,12 +292,19 @@ export default {
     selectedStudent: false,
     warningType: 'fag',
     termin: '1',
-    selectedFag: []
+    selectedFag: [],
+    pdfFile: false,
+    previewDialog: false
   }),
   methods: {
     showDialog (item) {
       this.selectedStudent = item
       this.dialog = true
+    },
+    async openPreview () {
+      const { data } = await this.$http.post('https://api.louie.alheimsins.net/api/documents/generate/base64', payload)
+      this.pdfFile = data
+      this.previewDialog = true
     }
   },
   created () {
@@ -282,7 +318,8 @@ export default {
       'students',
       'loading'
     ])
-  }
+  },
+  components: { pdf }
 }
 </script>
 
@@ -295,5 +332,13 @@ export default {
 }
 .rounded-card {
   border-radius: 10px;
+}
+.wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -moz-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 </style>
