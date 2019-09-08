@@ -63,9 +63,11 @@ export default {
   box-shadow: none;
 }
 
-tr:hover {
+tr:hover td:first-child {
   cursor: pointer;
-  background: #F47F97 !important;
-  color: white !important;
+  border-left: 8px #F47F97 solid;
+}
+html {
+  overflow-y: hidden;
 }
 </style>

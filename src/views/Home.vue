@@ -21,60 +21,25 @@
         <v-data-table
           color="#F47F97"
           hide-default-footer
-          :headers="computedHeaders"
+          :headers="headers"
           :items="students"
           :search="search"
           :loading="loading"
           :items-per-page="pagination.rowsPerPage"
+          :sort-by="pagination.sortBy"
           :page.sync="pagination.page"
           :expanded.sync="expanded"
           item-key="uid"
-          single-expand
-          show-expand
           loading-text="Laster elever..."
           no-data-text="Ingen elever funnet"
         >
 
         <!-- Send warning button -->
-        <template v-slot:item.uid="{ item }">
-          <v-btn
-            color="#F47F97"
-            dark
-            fab
-            x-small
-            @click="showDialog(item)"
-          >
-            <v-icon>mdi-send</v-icon>
-          </v-btn>
-        </template>
-
-        <!-- Expanded log -->
-        <template v-slot:expanded-item="{ headers, item }">
-          <td :colspan="headers.length">
-
-            <template>
-              <v-simple-table expand class="noHover">
-                <thead>
-                  <tr>
-                    <th class="text-left">Dato</th>
-                    <th class="text-left">Periode</th>
-                    <th class="text-left">Type</th>
-                    <th class="text-left">Fag</th>
-                    <th class="text-left">Sendt av</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1. september 2019</td>
-                    <td>1. termin</td>
-                    <td>Varselbrev fag</td>
-                    <td>Spansk I+II</td>
-                    <td>Demo User</td>
-                  </tr>
-                </tbody>
-              </v-simple-table>
-            </template>
-          </td>
+        <template v-slot:item="{ item }">
+          <tr @click="showDialog(item)">
+            <td>{{ item.name }}</td>
+            <td>{{ item.groups }}</td>
+          </tr>
         </template>
 
         <v-alert slot="no-data" :value="true" v-if="loading !== true" color="error" icon="mdi-alert">
@@ -102,20 +67,20 @@
 
       <v-dialog
         v-model="dialog"
-        max-width="600"
+        max-width="800"
       >
         <v-card color="#F47F97" dark>
           <v-toolbar dark flat color="#F47F97">
             <v-btn icon dark @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
+            <v-toolbar-title>{{selectedStudent.name ? selectedStudent.name.toUpperCase() : ''}}</v-toolbar-title>
           </v-toolbar>
-          <v-card-title class="headline">{{selectedStudent.name ? selectedStudent.name.toUpperCase() : ''}}</v-card-title>
           <v-card-text class="white--text">
             <v-row>
               <v-col>
                 <v-avatar
-                  size="184"
+                  size="220"
                   tile
                   class="rounded-card"
                 >
@@ -123,16 +88,24 @@
                 </v-avatar>
               </v-col>
               <v-col>
+                <p class="dialog-title">Info</p>
                 <v-list
                   tile
-                  light
-                  class="rounded-card"
+                  style="background: transparent;"
                 >
+
+                  <!-- School -->
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-school</v-icon>
+                    </v-list-item-icon>
+                    {{selectedStudent.school}}
+                  </v-list-item>
 
                   <!-- Class -->
                   <v-list-item>
                     <v-list-item-icon>
-                      <v-icon>mdi-home</v-icon>
+                      <v-icon>mdi-account-multiple</v-icon>
                     </v-list-item-icon>
                     {{selectedStudent.groups}}
                   </v-list-item>
@@ -162,29 +135,30 @@
 
                 <!-- Type varsel -->
                 <v-col>
-                  <h2>Type varsel</h2>
+                  <p class="dialog-title">Type varsel</p>
                   <v-radio-group v-model="warningType">
                     <v-radio label="Fag" value="fag"></v-radio>
                     <v-radio label="Orden" value="orden"></v-radio>
                     <v-radio label="Atferd" value="atferd"></v-radio>
                   </v-radio-group>
 
-                  <h2>Varselet gjelder</h2>
+                  <div v-if="warningType === 'fag'">
+                    <p class="dialog-title">Velg fag varselet gjelder</p>
+                    <div v-for="classes in selectedStudent.classes" :key="classes">
+                      <v-checkbox hide-details v-model="selectedFag" :label="classes" :value="classes"></v-checkbox>
+                    </div>
+                  </div>
+                </v-col>
+
+                <!-- Liste over fag -->
+                <v-col>
+
+                  <p class="dialog-title">Varselet gjelder</p>
                   <v-radio-group v-model="termin">
                     <v-radio label="Halvårsvurdering 1. termin" value="1"></v-radio>
                     <v-radio label="Halvårsvurdering 2. termin" value="2"></v-radio>
                     <v-radio label="Standpunktkarakter" value="3"></v-radio>
                   </v-radio-group>
-                </v-col>
-
-                <!-- Liste over fag -->
-                <v-col>
-                  <div v-if="warningType === 'fag'">
-                    <h2>Velg fag varselet gjelder</h2>
-                    <div v-for="classes in selectedStudent.classes">
-                      <v-checkbox hide-details v-model="selectedFag" :label="classes" :value="classes"></v-checkbox>
-                    </div>
-                  </div>
                 </v-col>
               </v-row>
             </v-flex>
@@ -200,7 +174,6 @@
             Forhåndsvisning
             </v-btn>
 
-
             <v-dialog
               v-model="previewDialog"
               fullscreen
@@ -209,11 +182,11 @@
             >
               <v-card>
                 <v-toolbar fixed color="#F47F97">
-                  <v-btn @click="previewDialog = false" icon text>
-                    <v-icon dark>mdi-close</v-icon>
+                  <v-btn @click="previewDialog = false" dark icon text>
+                    <v-icon>mdi-close</v-icon>
                   </v-btn>
-                  <v-toolbar-title>
-                    Forhåndsvisning
+                  <v-toolbar-title class="white--text">
+                    FORHÅNDSVISNING
                   </v-toolbar-title>
                 </v-toolbar>
                 <div class="wrapper" ref="pdfview">
@@ -254,27 +227,9 @@ const headers = [
     value: 'name'
   },
   {
-    text: 'E-post',
-    sortable: false,
-    value: 'mail',
-    hide: 'mdAndDown'
-  },
-  {
-    text: 'tlf.',
-    sortable: false,
-    value: 'phone',
-    hide: 'mdAndDown'
-  },
-  {
     text: 'Klasse',
     sortable: true,
-    value: 'groups',
-    hide: 'mdAndDown'
-  },
-  {
-    text: 'Send varsel',
-    sortable: false,
-    value: 'uid'
+    value: 'groups'
   }
 ]
 
@@ -282,6 +237,7 @@ export default {
   name: 'Home',
   data: () => ({
     search: '',
+    headers,
     expanded: [],
     pagination: {
       rowsPerPage: 8,
@@ -302,7 +258,7 @@ export default {
       this.dialog = true
     },
     async openPreview () {
-      const { data } = await this.$http.post('https://api.louie.alheimsins.net/api/documents/generate/base64', payload)
+      const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, payload)
       this.pdfFile = data
       this.previewDialog = true
     }
@@ -310,15 +266,10 @@ export default {
   created () {
     this.$store.dispatch('GET_STUDENTS')
   },
-  computed: {
-    computedHeaders () {
-      return headers.filter(h => !h.hide || !this.$vuetify.breakpoint[h.hide])
-    },
-    ...mapState([
-      'students',
-      'loading'
-    ])
-  },
+  computed: mapState([
+    'students',
+    'loading'
+  ]),
   components: { pdf }
 }
 </script>
@@ -333,12 +284,18 @@ export default {
 .rounded-card {
   border-radius: 10px;
 }
+.v-list-item {
+  padding: 0;
+}
 .wrapper {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden !important;
   -webkit-overflow-scrolling: touch;
   -moz-overflow-scrolling: touch;
   -ms-overflow-scrolling: touch;
   overflow-scrolling: touch;
+}
+.dialog-title {
+  font-size: 1.25rem;
+  text-transform: uppercase;
 }
 </style>

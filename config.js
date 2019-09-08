@@ -1,3 +1,3 @@
 module.exports = {
-  apiUrl: process.env.LOUIE_API_URL || 'https://young-shape-9421.getsandbox.com'
+  apiUrl: process.env.LOUIE_API_URL || 'https://api.louie.alheimsins.net/api'
 }

@@ -33,7 +33,7 @@ export default new Vuex.Store({
     GET_STUDENTS: async (context, payload) => {
       try {
         context.commit('SET_LOADING', true)
-        const { data } = await Vue.axios.get(`${config.apiUrl}`)
+        const { data } = await Vue.axios.get(`${config.apiUrl}/students`)
         context.commit('SET_STUDENTS', data)
         context.commit('SET_LOADING', false)
       } catch (error) {
