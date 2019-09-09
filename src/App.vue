@@ -90,7 +90,7 @@
     </Footer>
 
     <!-- Snackbar -->
-    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : '#F47F97'" :bottom="true">
+    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : '#A3DECE'" :bottom="true">
       {{snackbar.message}}
     </v-snackbar>
 

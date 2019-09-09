@@ -88,7 +88,6 @@
                 </v-avatar>
               </v-col>
               <v-col>
-                <p class="dialog-title">Info</p>
                 <v-list
                   tile
                   style="background: transparent;"
@@ -130,9 +129,13 @@
               </v-col>
             </v-row>
 
+            </v-card-text>
+            </v-card>
+            <v-card>
+            <v-card-text>
             <v-flex>
               <v-row>
-              <v-tabs light color="white">
+              <v-tabs color="#A3DECE" light>
                 <v-tab>Varsel</v-tab>
                 <v-tab>Logg</v-tab>
               </v-tabs>
@@ -140,15 +143,15 @@
                 <v-col>
                   <p class="dialog-title">Type varsel</p>
                   <v-radio-group v-model="warningType">
-                    <v-radio label="Fag" value="fag"></v-radio>
-                    <v-radio label="Orden" value="orden"></v-radio>
-                    <v-radio label="Atferd" value="atferd"></v-radio>
+                    <v-radio color="#A3DECE" label="Fag" value="fag"></v-radio>
+                    <v-radio color="#A3DECE" label="Orden" value="orden"></v-radio>
+                    <v-radio color="#A3DECE" label="Atferd" value="atferd"></v-radio>
                   </v-radio-group>
 
                   <div v-if="warningType === 'fag'">
                     <p class="dialog-title">Varselet gjelder</p>
                     <div v-for="fag in student.classes" :key="fag">
-                      <v-checkbox hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
+                      <v-checkbox color="#A3DECE" hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
                     </div>
                   </div>
                 </v-col>
@@ -158,9 +161,9 @@
 
                   <p class="dialog-title">Varselet gjelder</p>
                   <v-radio-group v-model="termin">
-                    <v-radio label="Halvårsvurdering 1. termin" value="1"></v-radio>
-                    <v-radio label="Halvårsvurdering 2. termin" value="2"></v-radio>
-                    <v-radio label="Standpunktkarakter" value="3"></v-radio>
+                    <v-radio color="#A3DECE" label="Halvårsvurdering 1. termin" value="1"></v-radio>
+                    <v-radio color="#A3DECE" label="Halvårsvurdering 2. termin" value="2"></v-radio>
+                    <v-radio color="#A3DECE" label="Standpunktkarakter" value="3"></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
@@ -171,10 +174,11 @@
             <div class="flex-grow-1"></div>
 
             <v-btn
-              text
               @click="openPreview()"
+              text
+              class="mr-5"
             >
-            Forhåndsvisning
+              <v-icon left>mdi-file-document</v-icon> Forhåndsvisning
             </v-btn>
 
             <v-dialog
@@ -203,10 +207,10 @@
             </v-dialog>
 
             <v-btn
-              text
               @click="sendWarning"
+              text
             >
-            Send
+            <v-icon left>mdi-send</v-icon> Send
             </v-btn>
           </v-card-actions>
         </v-card>
