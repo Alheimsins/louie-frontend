@@ -275,7 +275,7 @@ export default {
           date: new Date().toISOString().substring(0, 10)
         }
       }
-      const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, p)
+      const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, payload)
       this.pdfFile = data
       this.previewDialog = true
     },
