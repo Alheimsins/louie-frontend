@@ -37,4 +37,11 @@
 code {
   margin-right: 15px;
 }
+p {
+  font-size: 18px !important;
+  color: black;
+}
+h5 {
+  color: black;
+}
 </style>

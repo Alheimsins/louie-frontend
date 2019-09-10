@@ -6,6 +6,11 @@
       dark
     >
 
+    <!-- Icon -->
+    <v-btn icon x-large color="#F47F97" class="hidden-xs-only">
+      <v-icon>mdi-school</v-icon>
+    </v-btn>
+
       <!-- Home -->
       <router-link to="/">
         <v-toolbar-title>LOUIE</v-toolbar-title>

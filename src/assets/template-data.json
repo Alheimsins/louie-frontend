@@ -1,9 +1,4 @@
 {
-  "data": {
-    "studentName": "Birger Bollerud",
-    "schoolName": "Bamble vgs. avd Grasmyr",
-    "date": "1971-11-18"
-  },
   "template": {
     "header": [
       {

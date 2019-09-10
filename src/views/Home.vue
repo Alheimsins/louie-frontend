@@ -46,7 +46,7 @@
           Du har ikke tilgang til noen elever. Ta kontakt med administrativt personale på din skole.
         </v-alert>
 
-        <v-alert slot="no-results" :value="true" color="error" icon="warning">
+        <v-alert slot="no-results" :value="true" color="error" icon="mdi-alert">
           Ditt søk etter "{{ search }}" fikk ingen resultater.<br/>
           Finner du ikke eleven du leter etter, ta kontakt med den som er ansvarlig for Extens eller administrativt personale på din skole.
         </v-alert>
@@ -209,6 +209,7 @@
             <v-btn
               @click="sendWarning"
               text
+              :disabled="warningType === 'fag' && selectedFag.length === 0"
             >
             <v-icon left>mdi-send</v-icon> Send
             </v-btn>
@@ -224,7 +225,7 @@
 <script>
 import config from '../../config'
 import pdf from 'vue-pdf'
-import payload from '../assets/template-data.json'
+import pdfTemplate from '../assets/template-data.json'
 import { mapState } from 'vuex'
 
 const headers = [
@@ -266,7 +267,15 @@ export default {
       this.dialog = true
     },
     async openPreview () {
-      const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, payload)
+      const payload = {
+        ...pdfTemplate,
+        data: {
+          studentName: this.selectedStudent.name,
+          schoolName: this.selectedStudent.school,
+          date: new Date().toISOString().substring(0, 10)
+        }
+      }
+      const { data } = await this.$http.post(`${config.apiUrl}/documents/generate/base64`, p)
       this.pdfFile = data
       this.previewDialog = true
     },
