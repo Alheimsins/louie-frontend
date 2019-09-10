@@ -1,7 +1,8 @@
 {
   "version": 2,
   "name": "louie-frontend",
-  "alias": "louie.maccyber1.now.sh",
+  "scope": "alheimsins",
+  "alias": "frontend.louie.alheimsins.net",
   "builds": [
     {
       "src": "package.json",
