@@ -1,5 +1,5 @@
 <template>
-  <v-container color="#f7f7f7">
+  <v-container color="background">
     <v-layout>
       <v-flex>
 
@@ -12,14 +12,14 @@
             single-line
             hide-details
             autofocus
-            color="#F47F97"
+            color="secondary"
             clearable
           ></v-text-field>
         </v-flex>
 
         <!-- Student table -->
         <v-data-table
-          color="#F47F97"
+          color="secondary"
           hide-default-footer
           :headers="headers"
           :items="students"
@@ -57,7 +57,7 @@
         <v-pagination
           v-model="pagination.page"
           circle
-          color="#F47F97"
+          color="secondary"
           :total-visible="7"
           prev-icon="mdi-menu-left"
           next-icon="mdi-menu-right"
@@ -69,8 +69,8 @@
         v-model="dialog"
         max-width="800"
       >
-        <v-card color="#F47F97" dark>
-          <v-toolbar dark flat color="#F47F97">
+        <v-card color="secondary" dark>
+          <v-toolbar dark flat color="secondary">
             <v-btn icon dark @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
@@ -135,7 +135,7 @@
             <v-card-text>
             <v-flex>
               <v-row>
-              <v-tabs color="#A3DECE" light>
+              <v-tabs color="primary" light>
                 <v-tab>Varsel</v-tab>
                 <v-tab>Logg</v-tab>
               </v-tabs>
@@ -143,15 +143,15 @@
                 <v-col>
                   <p class="dialog-title">Type varsel</p>
                   <v-radio-group v-model="warningType">
-                    <v-radio color="#A3DECE" label="Fag" value="fag"></v-radio>
-                    <v-radio color="#A3DECE" label="Orden" value="orden"></v-radio>
-                    <v-radio color="#A3DECE" label="Atferd" value="atferd"></v-radio>
+                    <v-radio color="primary" label="Fag" value="fag"></v-radio>
+                    <v-radio color="primary" label="Orden" value="orden"></v-radio>
+                    <v-radio color="primary" label="Atferd" value="atferd"></v-radio>
                   </v-radio-group>
 
                   <div v-if="warningType === 'fag'">
                     <p class="dialog-title">Varselet gjelder</p>
                     <div v-for="fag in student.classes" :key="fag">
-                      <v-checkbox color="#A3DECE" hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
+                      <v-checkbox color="primary" hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
                     </div>
                   </div>
                 </v-col>
@@ -161,9 +161,9 @@
 
                   <p class="dialog-title">Varselet gjelder</p>
                   <v-radio-group v-model="termin">
-                    <v-radio color="#A3DECE" label="Halvårsvurdering 1. termin" value="1"></v-radio>
-                    <v-radio color="#A3DECE" label="Halvårsvurdering 2. termin" value="2"></v-radio>
-                    <v-radio color="#A3DECE" label="Standpunktkarakter" value="3"></v-radio>
+                    <v-radio color="primary" label="Halvårsvurdering 1. termin" value="1"></v-radio>
+                    <v-radio color="primary" label="Halvårsvurdering 2. termin" value="2"></v-radio>
+                    <v-radio color="primary" label="Standpunktkarakter" value="3"></v-radio>
                   </v-radio-group>
                 </v-col>
               </v-row>
@@ -188,7 +188,7 @@
               transition="dialog-bottom-transition"
             >
               <v-card>
-                <v-toolbar fixed color="#F47F97">
+                <v-toolbar fixed color="secondary">
                   <v-btn @click="previewDialog = false" dark icon text>
                     <v-icon>mdi-close</v-icon>
                   </v-btn>

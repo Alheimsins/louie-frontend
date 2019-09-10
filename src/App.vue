@@ -1,13 +1,13 @@
 <template>
   <v-app>
    <v-app-bar
-      color="#a2ddcf"
+      color="primary"
       app
       dark
     >
 
     <!-- Icon -->
-    <v-btn icon x-large color="#F47F97" class="hidden-xs-only">
+    <v-btn icon x-large style="background: white" color="secondary" class="hidden-xs-only mr-3">
       <v-icon>mdi-school</v-icon>
     </v-btn>
 
@@ -95,7 +95,7 @@
     </Footer>
 
     <!-- Snackbar -->
-    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : '#A3DECE'" :bottom="true">
+    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : 'primary'" :bottom="true">
       {{snackbar.message}}
     </v-snackbar>
 
