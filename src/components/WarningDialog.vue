@@ -139,10 +139,8 @@
 </template>
 
 <script>
-import PdfView from './PdfView'
 import PreviewDialog from './PreviewDialog'
 import { mapState } from 'vuex'
-import config from '../../config'
 import pdfTemplate from '../assets/template-data.json'
 
 export default {
