@@ -70,7 +70,7 @@
         "moveDown": true
       },
       {
-        "text": "Ikke vær slem"
+        "text": "${subjects} Ikke vær slem"
       }
     ],
     "footer": [

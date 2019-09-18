@@ -92,7 +92,7 @@
                 <div v-if="form.warningType === 'fag'">
                   <p class="dialog-title">Varselet gjelder</p>
                   <div v-for="fag in student.classes" :key="fag">
-                    <v-checkbox color="primary" hide-details v-model="form.selectedFag" :label="fag" :value="fag"></v-checkbox>
+                    <v-checkbox color="primary" hide-details v-model="form.subjects" :label="fag" :value="fag"></v-checkbox>
                   </div>
                 </div>
               </v-col>
@@ -128,7 +128,7 @@
           <v-btn
             @click="sendWarning"
             text
-            :disabled="form.warningType === 'fag' && form.selectedFag.length === 0"
+            :disabled="form.warningType === 'fag' && form.subjects.length === 0"
           >
           <v-icon left>mdi-send</v-icon> Send
           </v-btn>
@@ -149,7 +149,7 @@ export default {
     form: {
       warningType: 'fag',
       term: '1',
-      selectedFag: []
+      subjects: []
     }
   }),
   methods: {
@@ -167,9 +167,9 @@ export default {
   },
   watch: {
     studentDialogVisable () {
-      this.warningType = 'fag'
-      this.term = '1'
-      this.selectedFag = []
+      this.form.warningType = 'fag'
+      this.form.term = '1'
+      this.form.subjects = []
     }
   },
   computed: {
