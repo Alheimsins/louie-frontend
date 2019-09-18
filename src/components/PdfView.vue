@@ -42,20 +42,16 @@
 
 <script>
 import pdf from 'vue-pdf'
+import { mapState } from 'vuex'
 
 export default {
-  props: {
-    pdfFile: {
-      type: String,
-      required: true
-    }
-  },
   data: () => ({
     zoom: 100
   }),
   components: {
     pdf
-  }
+  },
+  computed: mapState(['pdfFile'])
 }
 </script>
 

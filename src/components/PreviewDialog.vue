@@ -14,8 +14,7 @@
           FORHÅNDSVISNING
         </v-toolbar-title>
       </v-toolbar>
-      <PdfView :pdfFile="pdfFile">
-      </PdfView>
+      <PdfView></PdfView>
     </v-card>
   </v-dialog>
 </template>
@@ -40,8 +39,7 @@ export default {
       }
     },
     ...mapState([
-      'previewDialog',
-      'pdfFile'
+      'previewDialog'
     ])
   }
 }
