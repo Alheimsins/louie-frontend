@@ -12,14 +12,26 @@ export default new Vuex.Store({
       type: false
     },
     students: [],
-    student: false,
+    student: {},
     loading: false,
+    studentDialog: false,
+    previewDialog: false,
+    pdfFile: false,
     user: {
       username: 'maccyber',
       name: 'Jonas Enge'
     }
   },
   mutations: {
+    SET_PDF_FILE: (state, payload) => {
+      state.pdfFile = payload
+    },
+    SET_PREVIEW_DIALOG: (state, payload) => {
+      state.previewDialog = payload
+    },
+    SET_STUDENT_DIALOG: (state, payload) => {
+      state.studentDialog = payload
+    },
     SET_STUDENT: (state, payload) => {
       state.student = payload
     },
@@ -62,6 +74,16 @@ export default new Vuex.Store({
     },
     SEND_WARNING: async (context, payload) => {
       context.commit('SET_SNACKBAR', { msg: 'Varsel sent' })
+    },
+    GENERATE_PREVIEW: async (context, payload) => {
+      try {
+        const { data } = await Vue.axios.post(`${config.apiUrl}/documents/generate/base64`, payload)
+        context.commit('SET_PDF_FILE', data)
+        context.commit('SET_PREVIEW_DIALOG', true)
+      } catch (error) {
+        context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
+        context.commit('SET_LOADING', false)
+      }
     }
   }
 })
