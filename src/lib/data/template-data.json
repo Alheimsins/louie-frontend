@@ -48,7 +48,7 @@
         "fontSize": 20
       },
       {
-        "text": "Varsel om mulig nedsatt karakter i orden",
+        "text": "Varsel om mulig nedsatt karakter i ${warningType}",
         "startAt": {
           "x": 100,
           "y": 145
@@ -60,7 +60,7 @@
         "fontSize": 14
       },
       {
-        "text": "Du har vært slem. Fy!",
+        "text": "${term} - Du har vært slem. Fy!",
         "startAt": {
           "x": 100,
           "y": 175

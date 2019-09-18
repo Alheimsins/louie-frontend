@@ -83,16 +83,16 @@
               <!-- Type varsel -->
               <v-col>
                 <p class="dialog-title">Type varsel</p>
-                <v-radio-group v-model="warningType">
+                <v-radio-group v-model="form.warningType">
                   <v-radio color="primary" label="Fag" value="fag"></v-radio>
                   <v-radio color="primary" label="Orden" value="orden"></v-radio>
                   <v-radio color="primary" label="Atferd" value="atferd"></v-radio>
                 </v-radio-group>
 
-                <div v-if="warningType === 'fag'">
+                <div v-if="form.warningType === 'fag'">
                   <p class="dialog-title">Varselet gjelder</p>
                   <div v-for="fag in student.classes" :key="fag">
-                    <v-checkbox color="primary" hide-details v-model="selectedFag" :label="fag" :value="fag"></v-checkbox>
+                    <v-checkbox color="primary" hide-details v-model="form.selectedFag" :label="fag" :value="fag"></v-checkbox>
                   </div>
                 </div>
               </v-col>
@@ -101,7 +101,7 @@
               <v-col>
 
                 <p class="dialog-title">Varselet gjelder</p>
-                <v-radio-group v-model="termin">
+                <v-radio-group v-model="form.term">
                   <v-radio color="primary" label="Halvårsvurdering 1. termin" value="1"></v-radio>
                   <v-radio color="primary" label="Halvårsvurdering 2. termin" value="2"></v-radio>
                   <v-radio color="primary" label="Standpunktkarakter" value="3"></v-radio>
@@ -128,7 +128,7 @@
           <v-btn
             @click="sendWarning"
             text
-            :disabled="warningType === 'fag' && selectedFag.length === 0"
+            :disabled="form.warningType === 'fag' && form.selectedFag.length === 0"
           >
           <v-icon left>mdi-send</v-icon> Send
           </v-btn>
@@ -141,14 +141,16 @@
 <script>
 import PreviewDialog from './PreviewDialog'
 import { mapState } from 'vuex'
-import pdfTemplate from '../assets/template-data.json'
+import generateTemplate from '../lib/generate-template-data.js'
 
 export default {
   name: 'WarningDialog',
   data: () => ({
-    warningType: 'fag',
-    termin: '1',
-    selectedFag: []
+    form: {
+      warningType: 'fag',
+      term: '1',
+      selectedFag: []
+    }
   }),
   methods: {
     sendWarning () {
@@ -156,14 +158,7 @@ export default {
       this.$store.dispatch('SEND_WARNING')
     },
     openPreview () {
-      const payload = {
-        ...pdfTemplate,
-        data: {
-          studentName: this.student.name,
-          schoolName: this.student.school,
-          date: new Date().toISOString().substring(0, 10)
-        }
-      }
+      const payload = generateTemplate({ student: this.student, form: this.form })
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },
@@ -173,7 +168,7 @@ export default {
   watch: {
     studentDialogVisable () {
       this.warningType = 'fag'
-      this.termin = '1'
+      this.term = '1'
       this.selectedFag = []
     }
   },
