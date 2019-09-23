@@ -81,14 +81,23 @@
               light
               v-model="tab"
             >
+
+              <!-- Varsel tab -->
               <v-tab href="#tab-1">Varsel</v-tab>
+
+              <!-- Logg tab -->
               <v-tab href="#tab-2">Logg</v-tab>
+
+              <!-- Varsel tab -->
               <v-tab-item value="tab-1">
                 <WarningForm></WarningForm>
               </v-tab-item>
+
+              <!-- Logg tab -->
               <v-tab-item value="tab-2">
                 <StudentLog></StudentLog>
               </v-tab-item>
+
             </v-tabs>
           </v-row>
         </v-flex>

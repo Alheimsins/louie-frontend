@@ -14,7 +14,9 @@
           FORHÅNDSVISNING
         </v-toolbar-title>
       </v-toolbar>
+
       <PdfView></PdfView>
+
     </v-card>
   </v-dialog>
 </template>

@@ -17,4 +17,6 @@ COPY . .
 
 # build app for production with minification
 EXPOSE 8080
+
+# needs entrypoint to rebuild with correct envs
 CMD /app/entrypoint.sh

@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <!-- PDF view -->
     <div :style="'width:' + zoom + '%'" ref="pdfview" class="wrapper" :class='{"zoom-active": zoom > 100 }'>
       <pdf
         style="width: 100%;"
@@ -31,6 +33,7 @@
           </template>
           <span>Zoom ut</span>
         </v-tooltip>
+
       </span>
     </v-snackbar>
   </div>
@@ -52,7 +55,7 @@ export default {
     }
   },
   beforeDestroy () {
-    window.removeEventListener('keydown', this.handleKey())
+    window.removeEventListener('keydown', this.handleKey)
   },
   created () {
     window.addEventListener('keydown', this.handleKey)

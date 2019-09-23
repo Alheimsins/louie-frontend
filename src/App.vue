@@ -14,7 +14,11 @@
     </Footer>
 
     <!-- Snackbar -->
-    <v-snackbar v-model="snackbar.active" :color="snackbar.type === 'error' ? 'error' : 'primary'" :bottom="true">
+    <v-snackbar
+      v-model="snackbar.active"
+      :color="snackbar.type === 'error' ? 'error' : 'primary'"
+      :bottom="true"
+    >
       {{snackbar.message}}
     </v-snackbar>
 
