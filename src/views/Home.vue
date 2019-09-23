@@ -64,7 +64,7 @@
           ></v-pagination>
         </div>
 
-        <WarningDialog></WarningDialog>
+        <StudentDialog></StudentDialog>
 
       </v-flex>
     </v-layout>
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import WarningDialog from '../components/WarningDialog'
+import StudentDialog from '../components/StudentDialog'
 import { mapState } from 'vuex'
 
 const headers = [
@@ -114,13 +114,7 @@ export default {
     'loading'
   ]),
   components: {
-    WarningDialog
+    StudentDialog
   }
 }
 </script>
-
-<style scoped>
-.noHover tr:hover {
-  background: unset !important;
-}
-</style>

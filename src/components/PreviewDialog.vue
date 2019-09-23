@@ -24,8 +24,6 @@ import PdfView from './PdfView'
 import { mapState } from 'vuex'
 
 export default {
-  methods: {
-  },
   components: {
     PdfView
   },

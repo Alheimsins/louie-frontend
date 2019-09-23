@@ -1,9 +1,5 @@
 <template>
-  <div
-    @keydown.187='zoom += 20'
-    @keydown.189='zoom -= 20'
-    @keydown.48='zoom = 100'
-  >
+  <div>
     <div :style="'width:' + zoom + '%'" ref="pdfview" class="wrapper" :class='{"zoom-active": zoom > 100 }'>
       <pdf
         style="width: 100%;"
@@ -48,6 +44,19 @@ export default {
   data: () => ({
     zoom: 100
   }),
+  methods: {
+    handleKey ({ keyCode }) {
+      if (keyCode === 187) this.zoom += 20
+      if (keyCode === 189) this.zoom -= 20
+      if (keyCode === 48) this.zoom = 100
+    }
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.handleKey())
+  },
+  created () {
+    window.addEventListener('keydown', this.handleKey)
+  },
   components: {
     pdf
   },

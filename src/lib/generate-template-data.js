@@ -1,10 +1,8 @@
 const templateData = require('./data/template-data.json')
 
-const getTerm = term => {
-  return term === '1' || term === '2'
-    ? `Halvårsvurdering ${term}. termin`
-    : 'Standpunktkarakter'
-}
+const getTerm = term => term === '3'
+  ? 'Standpunktkarakter'
+  : `Halvårsvurdering ${term}. termin`
 
 module.exports = ({ student, form }) => {
   return {
@@ -14,7 +12,7 @@ module.exports = ({ student, form }) => {
       schoolName: student.school,
       warningType: form.warningType,
       term: getTerm(form.term),
-      subjects: form.subjects ? form.subjects.join(', ') : false,
+      subjects: form.warningType === 'fag' && form.subjects ? form.subjects.join(', ') : false,
       date: new Date().toISOString().substring(0, 10)
     }
   }
