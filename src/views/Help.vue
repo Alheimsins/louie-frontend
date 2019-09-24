@@ -11,15 +11,15 @@
               <v-card-text>
                 <p>Nedenfor finner du ofte stilte spørsmål, svar og hurtigtaster.</p>
                 <p>Feil, mangler og ønsker kan du sende til <a href="mailto:post.opplaring@t-fk.no" title="Send e-post til post@fylkeskommune.no" target="_blank">post@fylkeskommune.no</a></p>
-                <h5 class="title">Om Louie</h5>
+                <h3 class="headline">Om Louie</h3>
                 <br />
                 <p>Louie gir deg mulighet til å søke opp elevene du er kontakt- og faglærer for.</p>
                 <p>På forsiden velger du en elev ved å trykke på navnet i listen. Når du har trykket på navnet til eleven får du sende varsel til eleven.</p>
-                <h5 class="title">Spørsmål</h5>
+                <h3 class="headline">Spørsmål</h3>
                 <br />
                 <p><b>Jeg finner ikke eleven jeg leter etter.</b></p>
                 <p>Finner du ikke eleven du leter etter, ta kontakt med den som er ansvarlig for Extens eller administrativt personale på din skole.</p>
-                <h5 class="title">Hurtigtaster</h5>
+                <h3 class="headline">Hurtigtaster</h3>
                 <br />
                 <p><strong>Dokumentvisning</strong></p>
                 <p><code>+</code>Zoom inn</p>
@@ -41,7 +41,7 @@ p {
   font-size: 18px !important;
   color: black;
 }
-h5 {
+h5, h3 {
   color: black;
 }
 </style>

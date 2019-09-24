@@ -11,6 +11,9 @@
       :headers="headers"
       :items="log"
       :search="search"
+      no-data-text="Ingen eleverlogger funnet"
+      hide-default-footer
+      loading-text="Laster elevlogger..."
     ></v-data-table>
   </v-card-text>
 </template>

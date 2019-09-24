@@ -22,7 +22,11 @@
               tile
               class="rounded-card"
             >
-              <v-img :src="student.imageUrl"></v-img>
+              <v-img
+                :src="student.imageUrl || require('@/assets/no-picture.png')"
+                :lazy-src="require('@/assets/no-picture.png')"
+              >
+              </v-img>
             </v-avatar>
           </v-col>
           <v-col>

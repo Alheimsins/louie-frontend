@@ -78,7 +78,7 @@ export default {
       this.$store.dispatch('SEND_WARNING')
     },
     openPreview () {
-      const payload = generateTemplate({ student: this.student, form: this.form })
+      const payload = generateTemplate({ student: this.student, form: this.form, preview: true })
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },
