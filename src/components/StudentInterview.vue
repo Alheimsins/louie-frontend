@@ -38,6 +38,16 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
+      <v-textarea
+        autofocus
+        class="mt-5"
+        v-if="form.interview === 'done'"
+        counter
+        label="Notater"
+        auto-grow
+        value=""
+        hint="Fyll inn notater av elevsamtalen"
+      ></v-textarea>
       <v-radio-group v-model="form.interview">
         <v-radio color="primary" label="Elevsamtalen er gjennomført" value="done"></v-radio>
         <v-radio color="primary" label="Eleven ønsker ikke samtale" value="dont-want"></v-radio>

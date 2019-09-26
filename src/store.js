@@ -79,6 +79,9 @@ export default new Vuex.Store({
     SAVE_INTERVIEW: async (context, payload) => {
       context.commit('SET_SNACKBAR', { msg: 'Elevsamtale lagret' })
     },
+    SAVE_NOTE: async (context, payload) => {
+      context.commit('SET_SNACKBAR', { msg: 'Notat lagret' })
+    },
     GENERATE_PREVIEW: async (context, payload) => {
       try {
         const previewTemplate = generateTemplate({ ...payload, preview: true })

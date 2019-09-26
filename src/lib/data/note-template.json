@@ -48,7 +48,7 @@
         "fontSize": 20
       },
       {
-        "text": "Bekreftelse på gjennomført elevsamtale",
+        "text": "Lærernotat - ${studentName}",
         "startAt": {
           "x": 100,
           "y": 145
@@ -60,23 +60,11 @@
         "fontSize": 14
       },
       {
-        "text": "Det ble gjennomført elevsamtale ${date} mellom ${studentName} og ${teacherName}",
+        "text": "${note}",
         "startAt": {
           "x": 100,
           "y": 175
         }
-      },
-      {
-        "moveDown": true
-      },
-      {
-        "fontSize": 12
-      },
-      {
-        "text": "Med hilsen\n\n${teacherName}\nBamble vgs\n35 91 94 00\n\n"
-      },
-      {
-        "text": "Dokumentet er elektronisk godkjent og sendes uten signatur."
       }
     ],
     "footer": [

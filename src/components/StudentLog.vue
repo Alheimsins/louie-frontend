@@ -49,23 +49,33 @@ const headers = [
 
 const log = [
   {
-    date: '1. september 2019',
+    date: '26.09.19',
     type: 'Varselbrev fag',
     fag: 'Spansk I+II',
     term: '1. termin',
     sentByName: 'Demo User'
   },
   {
-    date: '1. september 2019',
+    date: '25.09.19',
     type: 'Varselbrev fag',
     fag: 'Engelsk',
     term: '1. termin',
     sentByName: 'Demo User'
   },
   {
-    date: '2. februar 2019',
+    date: '20.09.19',
     type: 'Varselbrev orden',
     term: '1. termin',
+    sentByName: 'Demo User'
+  },
+  {
+    date: '01.09.19',
+    type: 'Notat',
+    sentByName: 'Demo User'
+  },
+  {
+    date: '01.09.19',
+    type: 'Elevsamtale',
     sentByName: 'Demo User'
   }
 ]
