@@ -15,7 +15,7 @@
         "fontSize": 26
       },
       {
-        "text": "Alheimsins School of Awesomeness",
+        "text": "${companyName}",
         "startAt": {
           "x": 110,
           "y": 25

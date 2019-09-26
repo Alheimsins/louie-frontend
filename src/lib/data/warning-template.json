@@ -15,7 +15,7 @@
         "fontSize": 26
       },
       {
-        "text": "Alheimsins School of Awesomeness",
+        "text": "${companyName}",
         "startAt": {
           "x": 110,
           "y": 25
@@ -60,7 +60,7 @@
         "fontSize": 14
       },
       {
-        "text": "${term} - Du har vært slem. Fy!",
+        "text": "Varselet gjelder ${term} skoleåret ${schoolYear}",
         "startAt": {
           "x": 100,
           "y": 175
@@ -70,7 +70,28 @@
         "moveDown": true
       },
       {
-        "text": "${subjects} Ikke vær slem"
+        "text": "Dette omfatter følgende fag:\n${subjects}"
+      },
+      {
+        "moveDown": true
+      },
+      {
+        "text": "Vi varsler deg om situasjonen, slik at du har mulighet til å forbedre deg."
+      },
+      {
+        "moveDown": true
+      },
+      {
+        "text": "Har du spørsmål?"
+      },
+      {
+        "text": "Hvis noe ved varselet er uklart, eller du ønsker å snakke med noen om grunnlaget for varselet, ta kontakt med kontaktlæreren din så snart som mulig."
+      },
+      {
+        "moveDown": true
+      },
+      {
+        "text": "Hvis du er under 18 år, sendes dette brevet også til foresatte."
       },
       {
         "moveDown": true
@@ -79,7 +100,7 @@
         "fontSize": 12
       },
       {
-        "text": "Med hilsen\n\n${teacherName}\nBamble vgs\n35 91 94 00\n\n"
+        "text": "Med hilsen\n\n${teacherName}\n${schoolName}\n35 91 94 00\n\n"
       },
       {
         "text": "Dokumentet er elektronisk godkjent og sendes uten signatur."

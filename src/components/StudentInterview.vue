@@ -43,7 +43,7 @@
         class="mt-5"
         v-if="form.interview === 'done'"
         counter
-        label="Notater"
+        label="Notater (valgfritt)"
         auto-grow
         value=""
         hint="Fyll inn notater av elevsamtalen"

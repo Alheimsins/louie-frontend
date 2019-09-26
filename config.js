@@ -1,5 +1,6 @@
 module.exports = {
   apiUrl: process.env.LOUIE_API_URL || 'https://api.louie.alheimsins.net/api',
+  companyName: process.env.LOUIE_COMPANY_NAME || 'Alheimsins School of Awesomeness',
   colors: {
     primary: process.env.LOUIE_COLOR_PRIMARY || '#a2ddcf',
     background: process.env.LOUIE_COLOR_BACKGROUND || '#f7f7f7',
