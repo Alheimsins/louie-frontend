@@ -3,6 +3,7 @@
     <v-card-text>
       <p class="dialog-title">Elev notater</p>
       <p>Notater lagres i elevmappen i arkivet og kan ikke endres.</p>
+      <p>De lagrede notatene kan sees i elevmappa.</p>
       <v-textarea
         class="mt-5"
         counter
@@ -18,6 +19,7 @@
       <v-btn
         @click="openPreview()"
         text
+        :disabled="form.note.length === 0"
         class="mr-5"
       >
         <v-icon left>mdi-file-document</v-icon> Forhåndsvisning
@@ -25,6 +27,7 @@
       <v-btn
         @click="saveNote"
         text
+        :disabled="form.note.length === 0"
       >
         <v-icon left>mdi-content-save</v-icon> Lagre
       </v-btn>

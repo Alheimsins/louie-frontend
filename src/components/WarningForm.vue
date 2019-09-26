@@ -39,6 +39,7 @@
         @click="openPreview()"
         text
         class="mr-5"
+        :disabled="form.warningType === 'fag' && form.subjects.length === 0"
       >
         <v-icon left>mdi-file-document</v-icon> Forhåndsvisning
       </v-btn>

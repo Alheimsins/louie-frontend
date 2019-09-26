@@ -30,6 +30,18 @@
       <span>Hjem</span>
     </v-tooltip>
 
+    <!-- Elevmappa button -->
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <a href="https://elevmappa.vtfk.no">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-eye</v-icon>
+          </v-btn>
+        </a>
+      </template>
+      <span>Elevmappa</span>
+    </v-tooltip>
+
     <!-- Statistics button -->
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">
