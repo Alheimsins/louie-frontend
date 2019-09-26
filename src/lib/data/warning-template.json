@@ -32,7 +32,7 @@
         }
       },
       {
-        "text": "/${schoolName}",
+        "text": "/ ${schoolName}",
         "startAt": {
           "x": 350,
           "y": 75
@@ -71,6 +71,18 @@
       },
       {
         "text": "${subjects} Ikke vær slem"
+      },
+      {
+        "moveDown": true
+      },
+      {
+        "fontSize": 12
+      },
+      {
+        "text": "Med hilsen\n\n${teacherName}\nBamble vgs\n35 91 94 00\n\n"
+      },
+      {
+        "text": "Dokumentet er elektronisk godkjent og sendes uten signatur."
       }
     ],
     "footer": [
@@ -82,6 +94,30 @@
         "startAt": {
           "x": 100,
           "y": 700
+        }
+      }
+    ],
+    "watermark": [
+      {
+        "rotate": 45,
+        "options": {
+          "origin": [5, 150]
+        }
+      },
+      {
+        "fillColor": "red"
+      },
+      {
+        "opacity": 0.3
+      },
+      {
+        "fontSize": 60
+      },
+      {
+        "text": "Forhåndsvisning",
+        "startAt": {
+          "x": 100,
+          "y": 50
         }
       }
     ]

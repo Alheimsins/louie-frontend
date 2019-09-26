@@ -90,15 +90,23 @@
               <v-tab href="#tab-1">Varsel</v-tab>
 
               <!-- Logg tab -->
-              <v-tab href="#tab-2">Logg</v-tab>
+              <v-tab href="#tab-2">Samtale</v-tab>
+
+              <!-- Logg tab -->
+              <v-tab href="#tab-3">Logg</v-tab>
 
               <!-- Varsel tab -->
               <v-tab-item value="tab-1">
                 <WarningForm></WarningForm>
               </v-tab-item>
 
-              <!-- Logg tab -->
+              <!-- Samtale tab -->
               <v-tab-item value="tab-2">
+                <StudentInterview></StudentInterview>
+              </v-tab-item>
+
+              <!-- Logg tab -->
+              <v-tab-item value="tab-3">
                 <StudentLog></StudentLog>
               </v-tab-item>
 
@@ -114,6 +122,7 @@
 import { mapState } from 'vuex'
 import WarningForm from './WarningForm'
 import StudentLog from './StudentLog'
+import StudentInterview from './StudentInterview'
 
 export default {
   name: 'StudentDialog',
@@ -137,7 +146,8 @@ export default {
   },
   components: {
     WarningForm,
-    StudentLog
+    StudentLog,
+    StudentInterview
   },
   watch: {
     studentDialogVisable () {

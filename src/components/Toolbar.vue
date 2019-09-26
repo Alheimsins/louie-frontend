@@ -30,6 +30,18 @@
       <span>Hjem</span>
     </v-tooltip>
 
+    <!-- Statistics button -->
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <router-link to="/stats">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-chart-bar</v-icon>
+          </v-btn>
+        </router-link>
+      </template>
+      <span>Statistikk</span>
+    </v-tooltip>
+
     <!-- Help button -->
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">

@@ -54,6 +54,19 @@ const log = [
     fag: 'Spansk I+II',
     term: '1. termin',
     sentByName: 'Demo User'
+  },
+  {
+    date: '1. september 2019',
+    type: 'Varselbrev fag',
+    fag: 'Engelsk',
+    term: '1. termin',
+    sentByName: 'Demo User'
+  },
+  {
+    date: '2. februar 2019',
+    type: 'Varselbrev orden',
+    term: '1. termin',
+    sentByName: 'Demo User'
   }
 ]
 

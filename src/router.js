@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Help from './views/Help.vue'
+import Stats from './views/Stats.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/help',
       name: 'help',
       component: Help
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: Stats
     }
   ]
 })

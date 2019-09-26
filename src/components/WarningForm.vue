@@ -51,7 +51,7 @@
         text
         :disabled="form.warningType === 'fag' && form.subjects.length === 0"
       >
-      <v-icon left>mdi-send</v-icon> Send
+        <v-icon left>mdi-send</v-icon> Send
       </v-btn>
     </v-card-actions>
   </v-form>
@@ -59,7 +59,6 @@
 
 <script>
 import PreviewDialog from './PreviewDialog'
-import generateTemplate from '../lib/generate-template-data.js'
 import { mapState } from 'vuex'
 
 export default {
@@ -68,7 +67,8 @@ export default {
     form: {
       warningType: 'fag',
       term: '1',
-      subjects: []
+      subjects: [],
+      template: 'warning'
     }
   }),
   methods: {
@@ -78,7 +78,11 @@ export default {
       this.$store.dispatch('SEND_WARNING')
     },
     openPreview () {
-      const payload = generateTemplate({ student: this.student, form: this.form, preview: true })
+      const payload = {
+        student: this.student,
+        teacher: this.$store.state.user,
+        form: this.form
+      }
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },

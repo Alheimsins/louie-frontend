@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import config from '../config'
+import generateTemplate from './lib/generate-template-data'
 
 Vue.use(Vuex)
 
@@ -75,9 +76,13 @@ export default new Vuex.Store({
     SEND_WARNING: async (context, payload) => {
       context.commit('SET_SNACKBAR', { msg: 'Varsel sent' })
     },
+    SAVE_INTERVIEW: async (context, payload) => {
+      context.commit('SET_SNACKBAR', { msg: 'Elevsamtale lagret' })
+    },
     GENERATE_PREVIEW: async (context, payload) => {
       try {
-        const { data } = await Vue.axios.post(`${config.apiUrl}/documents/generate/base64`, payload)
+        const previewTemplate = generateTemplate({ ...payload, preview: true })
+        const { data } = await Vue.axios.post(`${config.apiUrl}/documents/generate/base64`, previewTemplate)
         context.commit('SET_PDF_FILE', data)
         context.commit('SET_PREVIEW_DIALOG', true)
       } catch (error) {
