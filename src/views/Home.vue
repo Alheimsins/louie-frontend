@@ -35,7 +35,7 @@
         >
 
           <template v-slot:item="{ item }">
-            <tr @click="showDialog(item.uid)">
+            <tr @click="showDialog(item.username)">
               <td>{{ item.name }}</td>
               <td>{{ item.groups }}</td>
             </tr>
@@ -101,8 +101,8 @@ export default {
     }
   }),
   methods: {
-    showDialog (uid) {
-      this.$store.dispatch('GET_STUDENT', uid)
+    showDialog (username) {
+      this.$store.dispatch('GET_STUDENT', username)
       this.$store.commit('SET_STUDENT_DIALOG', true)
     }
   },

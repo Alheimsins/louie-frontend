@@ -13,7 +13,7 @@
 
             <div v-if="form.warningType === 'fag'">
               <p class="dialog-title">Varselet gjelder</p>
-              <div v-for="fag in student.classes" :key="fag">
+              <div v-for="fag in student.classes" :key="fag.gid">
                 <v-checkbox color="primary" hide-details v-model="form.subjects" :label="fag.name" :value="fag.name"></v-checkbox>
               </div>
             </div>
