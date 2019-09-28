@@ -33,13 +33,13 @@
     <!-- Elevmappa button -->
     <v-tooltip bottom>
       <template v-slot:activator="{ on }">
-        <a href="https://elevmappa.vtfk.no">
+        <a href="https://elevmappa.vtfk.no" target="_blank">
           <v-btn icon v-on="on">
             <v-icon>mdi-eye</v-icon>
           </v-btn>
         </a>
       </template>
-      <span>Elevmappa</span>
+      <span>Elevmappa (ekstern lenke)</span>
     </v-tooltip>
 
     <!-- Statistics button -->

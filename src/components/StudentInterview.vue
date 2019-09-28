@@ -45,7 +45,7 @@
         counter
         label="Notater (valgfritt)"
         auto-grow
-        value=""
+        v-model="form.note"
         hint="Fyll inn notater av elevsamtalen"
       ></v-textarea>
       <v-radio-group v-model="form.interview">
@@ -85,7 +85,8 @@ export default {
   data: () => ({
     form: {
       interview: 'done',
-      template: 'interview'
+      template: 'interview',
+      note: ''
     }
   }),
   methods: {
@@ -102,9 +103,25 @@ export default {
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },
-  computed: mapState(['student']),
+  computed: {
+    studentDialogVisable: {
+      get () {
+        return this.$store.state.studentDialog
+      },
+      set (value) {
+        this.$store.commit('SET_STUDENT_DIALOG', value)
+      }
+    },
+    ...mapState(['student'])
+  },
   components: {
     PreviewDialog
+  },
+  watch: {
+    studentDialogVisable () {
+      this.form.interview = 'done'
+      this.form.note = ''
+    }
   }
 }
 </script>

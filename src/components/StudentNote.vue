@@ -61,6 +61,21 @@ export default {
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },
-  computed: mapState(['student'])
+  computed: {
+    studentDialogVisable: {
+      get () {
+        return this.$store.state.studentDialog
+      },
+      set (value) {
+        this.$store.commit('SET_STUDENT_DIALOG', value)
+      }
+    },
+    ...mapState(['student'])
+  },
+  watch: {
+    studentDialogVisable () {
+      this.form.note = ''
+    }
+  }
 }
 </script>
