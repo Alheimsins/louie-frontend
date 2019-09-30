@@ -47,7 +47,7 @@
         "text":"Varsel om mulig nedsatt karakter i ${warningType}\n\n",
         "style":"h1"
       },
-      "Varselet gjelder {term} skoleåret {schoolYear}.\n\n",
+      "Varselet gjelder ${term} skoleåret ${schoolYear}.\n\n",
       "Vi varsler deg om situasjonen, slik at du har mulighet til å forbedre deg.\n\n",
       "Du finner mer dokumentasjon i Fronter.\n\n",
       {

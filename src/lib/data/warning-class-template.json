@@ -68,7 +68,7 @@
       "Hvis noe ved varselet er uklart, eller du ønsker å snakke med noen om grunnlaget for varselet, ta kontakt med kontaktlæreren din så snart som mulig.\n\n",
       "Hvis du er under 18 år, sendes dette brevet også til foresatte.\n\n\n\n",
       "Med hilsen\n\n",
-      "${teacerName}\n",
+      "${teacherName}\n",
       "${schoolName}\n",
       {
         "text": "Dokumentet er elektronisk godkjent og sendes uten signatur.",
