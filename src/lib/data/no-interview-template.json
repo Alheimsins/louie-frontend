@@ -46,10 +46,10 @@
         ]
       },
       {
-        "text":"Bekreftelse på gjennomført elevsamtale\n\n",
+        "text":"Tilbud om elevsamtale\n\n",
         "style":"h1"
       },
-      "Det ble gjennomført elevsamtale ${date} mellom ${studentName} og kontaktlærer ${teacherName}.\n\n\n\n\n",
+      "Du har fått tilbud om elevsamtale av kontaktlærer {teacherName}. Denne er avslått {dato}, og blir dermed ikke gjennomført.\n\n\n\n\n",
       "Med hilsen\n\n",
       "${teacherName}\n",
       "${schoolName}\n",

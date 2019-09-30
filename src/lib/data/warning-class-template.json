@@ -2,9 +2,10 @@
   "template": {
     "header":[],
     "watermark": {
-      "text": "Forhåndsvisning",
+      "text": "      Forhåndsvisning      ",
       "color": "red",
-      "opacity": 0.3
+      "opacity": 0.3,
+      "font": "Roboto"
     },
     "content":[
       {
@@ -34,7 +35,8 @@
             "text":[
               {
                 "text":"/ ${schoolName}\n\n",
-                "style":"h2"
+                "style":"h2",
+                "margin":[0, 20, 0, 90]
               },
               "Vår dato: ${date}\n",
               "Unntatt offentlighet iht\n",
@@ -71,7 +73,7 @@
       "${teacherName}\n",
       "${schoolName}\n",
       {
-        "text": "Dokumentet er elektronisk godkjent og sendes uten signatur.",
+        "text": "\n\nDokumentet er elektronisk godkjent og sendes uten signatur.",
         "italics": true
       }
     ],
