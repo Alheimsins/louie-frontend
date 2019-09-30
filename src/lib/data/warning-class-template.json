@@ -19,7 +19,7 @@
           },
           {
             "text":"${companyName}",
-            "style": "h3"
+            "style":"h3"
           }
         ]
       },
@@ -36,7 +36,7 @@
                 "text":"/ ${schoolName}\n\n",
                 "style":"h2"
               },
-              "Vår dato: ${date} \n",
+              "Vår dato: ${date}\n",
               "Unntatt offentlighet iht\n",
               "Offl §13 jfr Fvl §13"
             ]
@@ -44,12 +44,31 @@
         ]
       },
       {
-        "text":"Bekreftelse på gjennomført elevsamtale\n\n",
+        "text": "Varsel om at det er tvil om du kan få karakter i ${warningType}\n\n",
         "style":"h1"
       },
-      "Det ble gjennomført elevsamtale ${date} mellom ${studentName} og kontaktlærer ${teacherName}.\n\n\n\n\n",
+      "Dette omfatter følgende fag: ${subjects}\n\n",
+      "Varselet gjelder ${term} skoleåret ${schoolYear}.\n\n",
+      {
+        "text": "Viktig om fravær\n\n",
+        "bold": true
+      },
+      {
+        "ul": [
+          "Du må møte til undervisningen slik at du kan få halvårsvurdering/standpunktkarakter.",
+          "Om du har dokumentert fravær må du levere dokumentasjon på fravær over 10 prosent snarest.",
+          "Om fraværet ditt gjør det urimelig med en grense på 10 prosent kan rektor etter begrunnet søknad godkjenne inntil 15 prosent udokumentert fravær i et fag. Dette må gjøres snarest og i god tid før karakteroppgjøret.\n\n"
+        ]
+      },
+      "Du finner en oversikt over fraværet i Fronter.\n\n",
+      {
+        "text": "Har du spørsmål?\n\n",
+        "bold":true
+      },
+      "Hvis noe ved varselet er uklart, eller du ønsker å snakke med noen om grunnlaget for varselet, ta kontakt med kontaktlæreren din så snart som mulig.\n\n",
+      "Hvis du er under 18 år, sendes dette brevet også til foresatte.\n\n\n\n",
       "Med hilsen\n\n",
-      "${teacherName}\n",
+      "${teacerName}\n",
       "${schoolName}\n",
       {
         "text": "Dokumentet er elektronisk godkjent og sendes uten signatur.",
