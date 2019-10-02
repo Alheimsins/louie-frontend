@@ -6,7 +6,6 @@
     <v-card
       color="secondary"
       dark
-      :loading="loading"
     >
       <v-toolbar dark flat color="secondary">
         <v-btn icon dark @click="studentDialogVisable = false">
@@ -74,7 +73,7 @@
       </v-card-text>
     </v-card>
 
-    <v-card>
+    <v-card :loading="loading">
       <v-card-text>
         <v-flex>
           <v-row>

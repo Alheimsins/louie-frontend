@@ -1,5 +1,8 @@
 <template>
-  <v-container color="background">
+  <v-container
+    color="background"
+    v-if="oidcIsAuthenticated"
+  >
     <v-layout>
       <v-flex>
 
@@ -73,7 +76,7 @@
 
 <script>
 import StudentDialog from '../components/StudentDialog'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 const headers = [
   {
@@ -109,10 +112,13 @@ export default {
   created () {
     this.$store.dispatch('GET_STUDENTS')
   },
-  computed: mapState([
-    'students',
-    'loading'
-  ]),
+  computed: {
+    ...mapState([
+      'students',
+      'loading'
+    ]),
+    ...mapGetters('oidcStore', ['oidcIsAuthenticated'])
+  },
   components: {
     StudentDialog
   }

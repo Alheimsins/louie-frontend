@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import { productOwner } from '../../config'
+import config from '../../config'
 
 export default {
   name: 'Footer',
   data: () => ({
-    productOwner
+    productOwner: config.productOwner
   })
 }
 </script>

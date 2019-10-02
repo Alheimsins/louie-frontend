@@ -9,6 +9,11 @@
       "use": "@now/static-build"
     }
   ],
+  "build": {
+    "env": {
+      "VUE_APP_LOUIE_PROD_URL": "https://frontend.louie.alheimsins.net"
+    }
+  },
   "routes": [
     { "src": "^/manifest.json", "dest": "/manifest.json" },
     { "src": "^/browserconfig.xml", "dest": "/browserconfig.xml" },

@@ -11,15 +11,16 @@ const getSchoolYear = (date = new Date()) => {
   return `${year - 1}/${year}`
 }
 
-const getTemplate = (template, type) => {
-  if (template === 'warning' && type === 'fag') return require('./data/warning-class-template.json')
+const getTemplate = (template, form) => {
+  if (template === 'warning' && form.warningType === 'fag') return require('./data/warning-class-template.json')
   if (template === 'warning') return require('./data/warning-template.json')
-  if (template === 'interview') return require('./data/interview-template.json')
+  if (template === 'interview' && form.interview === 'done') return require('./data/interview-template.json')
+  if (template === 'interview') return require('./data/no-interview-template.json')
   if (template === 'note') return require('./data/note-template.json')
 }
 
 const generateTemplate = ({ student, teacher, form, preview = true }) => {
-  const templateData = getTemplate(form.template, form.warningType)
+  const templateData = getTemplate(form.template, form)
   if (!preview) delete templateData.template.watermark
   return {
     ...templateData,

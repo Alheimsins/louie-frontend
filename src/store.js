@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { vuexOidcCreateStoreModule } from 'vuex-oidc'
 import config from '../config'
 import generateTemplate from './lib/generate-template-data'
 
@@ -93,5 +94,8 @@ export default new Vuex.Store({
         context.commit('SET_LOADING', false)
       }
     }
+  },
+  modules: {
+    oidcStore: vuexOidcCreateStoreModule(config.auth, { namespaced: true })
   }
 })

@@ -3,10 +3,11 @@
     color="primary"
     app
     dark
+    v-if="oidcIsAuthenticated"
   >
 
     <!-- App Icon -->
-    <v-btn icon x-large style="background: white" color="secondary" class="hidden-xs-only mr-3">
+    <v-btn icon x-large style="background: white; margin-left: 1px" color="secondary" class="hidden-xs-only mr-3">
       <v-icon>mdi-school</v-icon>
     </v-btn>
 
@@ -79,22 +80,27 @@
 
             <v-list-item>
               <v-list-item-icon>
-                <v-icon>mdi-account-circle</v-icon>
+                <v-avatar>
+                  <v-img v-if="oidcUser && oidcUser.picture" :src="oidcUser.picture"></v-img>
+                  <v-icon v-else>mdi-account-circle</v-icon>
+                </v-avatar>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>{{user.name}}</v-list-item-title>
-                <v-list-item-subtitle>{{user.username}}</v-list-item-subtitle>
+                <v-list-item-title>{{ oidcUser ? oidcUser.email : '' }}</v-list-item-title>
+                <v-list-item-subtitle>annen info</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
 
             <v-divider></v-divider>
 
-            <v-list-item>
-              <v-list-item-icon>
-                <v-icon>mdi-settings</v-icon>
-                <v-list-item-title>&nbsp; Innstillinger</v-list-item-title>
-              </v-list-item-icon>
-            </v-list-item>
+            <router-link to="/settings">
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-settings</v-icon>
+                  <v-list-item-title>&nbsp; Innstillinger</v-list-item-title>
+                </v-list-item-icon>
+              </v-list-item>
+            </router-link>
 
             <v-list-item>
               <v-list-item-icon>
@@ -111,10 +117,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Toolbar',
-  computed: mapState(['user'])
+  computed: mapGetters('oidcStore', ['oidcIsAuthenticated', 'oidcUser'])
 }
 </script>

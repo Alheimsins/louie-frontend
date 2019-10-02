@@ -1,4 +1,16 @@
-module.exports = {
+const getAuthConfig = (url = 'http://localhost:8080') => ({
+  auth: {
+    authority: process.env.VUE_APP_AUTH_AUTHORITY || 'https://accounts.google.com',
+    clientId: process.env.VUE_APP_AUTH_CLIENT_ID || '244258194345-mhh30378l6o6n97v2lf5svhv51e4bski.apps.googleusercontent.com',
+    redirectUri: process.env.VUE_APP_AUTH_REDIRECT_URI || `${url}/oidc-callback`,
+    responseType: process.env.VUE_APP_AUTH_RESPONSE_TYPE || 'id_token token',
+    scope: process.env.VUE_APP_AUTH_SCOPE || 'openid profile email',
+    automaticSilentRenew: process.env.VUE_APP_AUTH_CLIENT_ID || true,
+    silentRedirectUri: process.env.VUE_APP_AUTH_CLIENT_ID || `${url}/silent-renew-oidc.html`
+  }
+})
+
+export default {
   apiUrl: process.env.VUE_APP_LOUIE_API_URL || 'https://api.louie.alheimsins.net/api',
   company: {
     name: process.env.VUE_APP_LOUIE_COMPANY_NAME || 'Alheimsins School of Awesomeness',
@@ -20,5 +32,6 @@ module.exports = {
     notes: process.env.VUE_APP_LOUIE_COLOR_NOTES || true,
     interview: process.env.VUE_APP_LOUIE_COLOR_INTERVIEW || true,
     insight: process.env.VUE_APP_LOUIE_COLOR_INSIGHT || true
-  }
+  },
+  ...getAuthConfig(process.env.VUE_APP_LOUIE_PROD_URL)
 }

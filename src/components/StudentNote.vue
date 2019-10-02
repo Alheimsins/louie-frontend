@@ -57,7 +57,6 @@ export default {
         teacher: this.$store.state.user,
         form: { ...this.form, note: JSON.stringify(this.form.note).slice(1, -1) }
       }
-      console.log(payload)
       this.$store.dispatch('GENERATE_PREVIEW', payload)
     }
   },
