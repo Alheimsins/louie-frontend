@@ -86,8 +86,8 @@
                 </v-avatar>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>{{ oidcUser ? oidcUser.email : '' }}</v-list-item-title>
-                <v-list-item-subtitle>annen info</v-list-item-subtitle>
+                <v-list-item-title>{{ oidcUser.name || 'demouser' }}</v-list-item-title>
+                <v-list-item-subtitle>{{ oidcUser.email || 'demomail' }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
 
