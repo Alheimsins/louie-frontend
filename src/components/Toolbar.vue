@@ -102,7 +102,7 @@
               </v-list-item>
             </router-link>
 
-            <v-list-item>
+            <v-list-item @click="removeUser">
               <v-list-item-icon>
                 <v-icon color="red">mdi-power</v-icon>
                 <v-list-item-title>&nbsp; Logg ut</v-list-item-title>
@@ -117,10 +117,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Toolbar',
+  methods: {
+    ...mapActions('oidcStore', ['signOutOidc', 'removeUser'])
+  },
   computed: mapGetters('oidcStore', ['oidcIsAuthenticated', 'oidcUser'])
 }
 </script>

@@ -72,10 +72,13 @@
       </v-flex>
     </v-layout>
   </v-container>
+  <SignedOut v-else>
+  </SignedOut>
 </template>
 
 <script>
 import StudentDialog from '../components/StudentDialog'
+import SignedOut from '../components/SignedOut'
 import { mapState, mapGetters } from 'vuex'
 
 const headers = [
@@ -120,7 +123,8 @@ export default {
     ...mapGetters('oidcStore', ['oidcIsAuthenticated'])
   },
   components: {
-    StudentDialog
+    StudentDialog,
+    SignedOut
   }
 }
 </script>
