@@ -1,4 +1,4 @@
-const config = require('../../config')
+import config from '../../config'
 
 const getTerm = term => term === '3'
   ? 'standpunktkarakter'
