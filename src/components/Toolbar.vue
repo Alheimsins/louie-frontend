@@ -81,7 +81,7 @@
             <v-list-item>
               <v-list-item-icon>
                 <v-avatar>
-                  <v-img v-if="oidcUser && oidcUser.picture" :src="oidcUser.picture"></v-img>
+                  <v-img v-if="oidcUser && oidcUser.picture" :src="Array.isArray(oidcUser.picture) ? oidcUser.picture[0] : oidcUser.picture"></v-img>
                   <v-icon v-else>mdi-account-circle</v-icon>
                 </v-avatar>
               </v-list-item-icon>
