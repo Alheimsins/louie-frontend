@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { vuexOidcCreateStoreModule } from 'vuex-oidc'
 import config from '../config'
+import getData from './lib/get-data'
 import generateTemplate from './lib/generate-template-data'
 
 Vue.use(Vuex)
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     },
     students: [],
     student: {},
+    groups: [],
     loading: false,
     studentDialog: false,
     previewDialog: false,
@@ -40,6 +42,9 @@ export default new Vuex.Store({
     SET_STUDENTS: (state, payload) => {
       state.students = payload
     },
+    SET_GROUPS: (state, payload) => {
+      state.groups = payload
+    },
     SET_LOADING: (state, payload) => {
       state.loading = payload
     },
@@ -55,7 +60,7 @@ export default new Vuex.Store({
     GET_STUDENT: async (context, payload) => {
       try {
         context.commit('SET_LOADING', true)
-        const { data } = await Vue.axios.get(`${config.apiUrl}/students/${payload}`)
+        const { data } = await getData(`/students/${payload}`)
         context.commit('SET_STUDENT', data)
         context.commit('SET_LOADING', false)
       } catch (error) {
@@ -66,8 +71,19 @@ export default new Vuex.Store({
     GET_STUDENTS: async (context, payload) => {
       try {
         context.commit('SET_LOADING', true)
-        const { data } = await Vue.axios.get(`${config.apiUrl}/students`)
+        const { data } = await getData('/students')
         context.commit('SET_STUDENTS', data)
+        context.commit('SET_LOADING', false)
+      } catch (error) {
+        context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
+        context.commit('SET_LOADING', false)
+      }
+    },
+    GET_GROUPS: async (context, payload) => {
+      try {
+        context.commit('SET_LOADING', true)
+        const { data } = await getData('/groups')
+        context.commit('SET_GROUPS', data)
         context.commit('SET_LOADING', false)
       } catch (error) {
         context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
@@ -86,7 +102,7 @@ export default new Vuex.Store({
     GENERATE_PREVIEW: async (context, payload) => {
       try {
         const previewTemplate = generateTemplate({ ...payload, preview: true })
-        const { data } = await Vue.axios.post(`${config.apiUrl}/documents/generate/base64`, previewTemplate)
+        const { data } = await getData('/documents/generate/base64', previewTemplate)
         context.commit('SET_PDF_FILE', data)
         context.commit('SET_PREVIEW_DIALOG', true)
       } catch (error) {

@@ -9,14 +9,17 @@
                 <h3 class="headline">Innstillinger</h3>
               </v-card-title>
               <v-card-text>
+                <p>Grupper</p>
+                <p>{{ groups.map(({ gid }) => gid).join(', ')}}</p>
+                <p>
+                  Browser version:  {{ browser }}
                 <p>
                   You are signed in as:
                 </p>
-                <div class="code" v-html="oidcUser"></div>
+                <div v-html="oidcUser"></div>
                 <p>
                   Id token expires {{ new Date(oidcIdTokenExp).toISOString() }}
                 </p>
-
                 <textarea readonly style="width:100%;height: 200px;font-family: monospace;" v-model="oidcIdToken"></textarea>
               </v-card-text>
             </v-card>
@@ -28,10 +31,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'Settings',
+  data: () => ({
+    browser: navigator.userAgent
+  }),
+  created () {
+    this.$store.dispatch('GET_GROUPS')
+  },
   computed: {
     ...mapGetters('oidcStore', [
       'oidcIsAuthenticated',
@@ -39,7 +48,8 @@ export default {
       'oidcUser',
       'oidcIdToken',
       'oidcIdTokenExp'
-    ])
+    ]),
+    ...mapState(['groups'])
   }
 }
 </script>
