@@ -81,7 +81,7 @@ export default {
     openPreview () {
       const payload = {
         student: this.student,
-        teacher: this.$store.state.user,
+        teacher: this.$store.state.oidcStore.user,
         form: this.form
       }
       this.$store.dispatch('GENERATE_PREVIEW', payload)

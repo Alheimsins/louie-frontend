@@ -21,16 +21,13 @@ export default new Vuex.Store({
     loading: false,
     studentDialog: false,
     previewDialog: false,
-    pdfFile: false,
-    user: {
-      username: 'maccyber',
-      name: 'Jonas Enge'
-    }
+    pdfFile: false
   },
   getters: {
-    getPdfFile: state => {
+    getPdfFile: ({ pdfFile }) => {
       /* eslint-env browser */
-      return new Uint8Array(atob(state.pdfFile).split('').map(c => c.charCodeAt(0)))
+      if (!pdfFile) return
+      return new Uint8Array(atob(pdfFile).split('').map(c => c.charCodeAt(0)))
     }
   },
   mutations: {
@@ -39,6 +36,7 @@ export default new Vuex.Store({
     },
     SET_PREVIEW_DIALOG: (state, payload) => {
       state.previewDialog = payload
+      if (!payload) state.pdfFile = false
     },
     SET_STUDENT_DIALOG: (state, payload) => {
       state.studentDialog = payload
