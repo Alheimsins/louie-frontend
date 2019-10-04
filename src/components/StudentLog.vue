@@ -20,6 +20,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 const headers = [
   {
     text: 'Dato',
@@ -50,15 +51,13 @@ const headers = [
 
 export default {
   name: 'StudentLog',
-  created () {
-  },
   data: () => ({
     headers,
     search: ''
   }),
-  computed: mapState([
-    'student',
-    'documents'
-  ])
+  created () {
+    this.$store.dispatch('GET_DOCUMENTS')
+  },
+  computed: mapState(['documents'])
 }
 </script>

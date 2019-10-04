@@ -97,7 +97,40 @@ export default new Vuex.Store({
     GET_DOCUMENTS: async (context, payload) => {
       try {
         context.commit('SET_LOADING', true)
-        const { data } = await getData(`/students/${payload}/documents}`)
+        // TODO: Fix loop
+        // const { data } = await getData(`/students/bolb1/documents`)
+        const data = [
+          {
+            date: '26.09.19',
+            type: 'Varselbrev fag',
+            fag: 'Spansk I+II',
+            term: '1. termin',
+            sentByName: 'Demo User'
+          },
+          {
+            date: '25.09.19',
+            type: 'Varselbrev fag',
+            fag: 'Engelsk',
+            term: '1. termin',
+            sentByName: 'Demo User'
+          },
+          {
+            date: '20.09.19',
+            type: 'Varselbrev orden',
+            term: '1. termin',
+            sentByName: 'Demo User'
+          },
+          {
+            date: '01.09.19',
+            type: 'Notat',
+            sentByName: 'Demo User'
+          },
+          {
+            date: '01.09.19',
+            type: 'Elevsamtale',
+            sentByName: 'Demo User'
+          }
+        ]
         context.commit('SET_DOCUMENTS', data)
         context.commit('SET_LOADING', false)
       } catch (error) {
