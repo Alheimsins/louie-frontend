@@ -36,30 +36,20 @@ export default {
     Footer,
     Toolbar
   },
-  methods: {
-    userLoaded: e => {
-      console.log('I am listening to the user loaded event in vuex-oidc', e.detail)
-    },
-    oidcError: e => {
-      console.log('I am listening to the oidc error event in vuex-oidc', e.detail)
-    }
-  },
   computed: {
     ...mapGetters('oidcStore', ['oidcIsAuthenticated']),
     ...mapState(['snackbar'])
-  },
-  mounted () {
-    window.addEventListener('vuexoidc:userLoaded', this.userLoaded)
-    window.addEventListener('vuexoidc:oidcError', this.oidcError)
-  },
-  destroyed () {
-    window.removeEventListener('vuexoidc:userLoaded', this.userLoaded)
-    window.removeEventListener('vuexoidc:oidcError', this.oidcError)
   }
 }
 </script>
 
 <style>
+#app {
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+}
+.v-application .headline {
+  font-family: "Nunito", Helvetica, Arial, sans-serif !important;
+}
 .v-data-table tbody tr.expanded.expanded__content {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -71,11 +61,11 @@ tr:hover td:first-child {
   cursor: pointer;
   border-left: 8px #F47F97 solid;
 }
-html {
-  overflow-y: hidden;
-}
 a {
   text-decoration: none;
   color: unset !important;
+}
+html {
+  overflow: auto;
 }
 </style>

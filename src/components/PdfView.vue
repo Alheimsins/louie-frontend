@@ -69,11 +69,11 @@ export default {
 
 <style>
 .wrapper {
-  overflow: hidden !important;
   -webkit-overflow-scrolling: touch;
   -moz-overflow-scrolling: touch;
   -ms-overflow-scrolling: touch;
   overflow-scrolling: touch;
+  overflow: hidden !important;
 }
 .transparent-snack {
   opacity: 0.5;

@@ -179,6 +179,7 @@ export default {
 .dialog-title {
   font-size: 1.25rem;
   text-transform: uppercase;
+  font-family: 'Nunito'
 }
 .theme--light.v-tabs > .v-tabs-bar {
   background-color: transparent !important;

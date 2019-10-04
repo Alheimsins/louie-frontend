@@ -101,10 +101,12 @@ export default new Vuex.Store({
     },
     GENERATE_PREVIEW: async (context, payload) => {
       try {
+        context.commit('SET_LOADING', true)
         const previewTemplate = generateTemplate({ ...payload, preview: true })
         const { data } = await getData('/documents/generate/base64', previewTemplate)
         context.commit('SET_PDF_FILE', data)
         context.commit('SET_PREVIEW_DIALOG', true)
+        context.commit('SET_LOADING', false)
       } catch (error) {
         context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
         context.commit('SET_LOADING', false)
