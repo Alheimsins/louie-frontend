@@ -80,7 +80,7 @@
 
             <!-- Tabs -->
             <v-tabs
-              color="primary"
+              color="accent"
               light
               v-model="tab"
             >
@@ -108,7 +108,7 @@
               </v-tab-item>
 
               <!-- Notat tab -->
-              <v-tab-item value="tab-3">
+              <v-tab-item @click="getLogs" value="tab-3">
                 <StudentNote></StudentNote>
               </v-tab-item>
 
@@ -151,6 +151,11 @@ export default {
       'studentDialog',
       'loading'
     ])
+  },
+  methods: {
+    getLogs: () => {
+      this.$store.dispatch('GET_DOCUMENTS', this.student.username)
+    }
   },
   components: {
     WarningForm,

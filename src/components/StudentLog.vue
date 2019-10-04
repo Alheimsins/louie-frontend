@@ -9,7 +9,7 @@
     ></v-text-field>
     <v-data-table
       :headers="headers"
-      :items="log"
+      :items="documents"
       :search="search"
       no-data-text="Ingen eleverlogger funnet"
       hide-default-footer
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 const headers = [
   {
     text: 'Dato',
@@ -47,45 +48,17 @@ const headers = [
   }
 ]
 
-const log = [
-  {
-    date: '26.09.19',
-    type: 'Varselbrev fag',
-    fag: 'Spansk I+II',
-    term: '1. termin',
-    sentByName: 'Demo User'
-  },
-  {
-    date: '25.09.19',
-    type: 'Varselbrev fag',
-    fag: 'Engelsk',
-    term: '1. termin',
-    sentByName: 'Demo User'
-  },
-  {
-    date: '20.09.19',
-    type: 'Varselbrev orden',
-    term: '1. termin',
-    sentByName: 'Demo User'
-  },
-  {
-    date: '01.09.19',
-    type: 'Notat',
-    sentByName: 'Demo User'
-  },
-  {
-    date: '01.09.19',
-    type: 'Elevsamtale',
-    sentByName: 'Demo User'
-  }
-]
-
 export default {
   name: 'StudentLog',
+  created () {
+  },
   data: () => ({
     headers,
-    log,
     search: ''
-  })
+  }),
+  computed: mapState([
+    'student',
+    'documents'
+  ])
 }
 </script>

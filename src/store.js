@@ -17,6 +17,7 @@ export default new Vuex.Store({
     students: [],
     student: {},
     groups: [],
+    documents: [],
     loading: false,
     studentDialog: false,
     previewDialog: false,
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     SET_GROUPS: (state, payload) => {
       state.groups = payload
+    },
+    SET_DOCUMENTS: (state, payload) => {
+      state.documents = payload
     },
     SET_LOADING: (state, payload) => {
       state.loading = payload
@@ -84,6 +88,17 @@ export default new Vuex.Store({
         context.commit('SET_LOADING', true)
         const { data } = await getData('/groups')
         context.commit('SET_GROUPS', data)
+        context.commit('SET_LOADING', false)
+      } catch (error) {
+        context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
+        context.commit('SET_LOADING', false)
+      }
+    },
+    GET_DOCUMENTS: async (context, payload) => {
+      try {
+        context.commit('SET_LOADING', true)
+        const { data } = await getData(`/students/${payload}/documents}`)
+        context.commit('SET_DOCUMENTS', data)
         context.commit('SET_LOADING', false)
       } catch (error) {
         context.commit('SET_SNACKBAR', { msg: error.message, type: 'error' })
