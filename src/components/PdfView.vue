@@ -5,7 +5,7 @@
     <div :style="'width:' + zoom + '%'" ref="pdfview" class="wrapper" :class='{"zoom-active": zoom > 100 }'>
       <pdf
         style="width: 100%;"
-        :src="pdfFile"
+        :src="getPdfFile"
         @page-loaded="currentPage = $event"
       ></pdf>
     </div>
@@ -41,7 +41,7 @@
 
 <script>
 import pdf from 'vue-pdf'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   data: () => ({
@@ -63,7 +63,7 @@ export default {
   components: {
     pdf
   },
-  computed: mapState(['pdfFile'])
+  computed: mapGetters(['getPdfFile'])
 }
 </script>
 

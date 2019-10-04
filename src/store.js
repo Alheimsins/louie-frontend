@@ -27,6 +27,12 @@ export default new Vuex.Store({
       name: 'Jonas Enge'
     }
   },
+  getters: {
+    getPdfFile: state => {
+      /* eslint-env browser */
+      return new Uint8Array(atob(state.pdfFile).split('').map(c => c.charCodeAt(0)))
+    }
+  },
   mutations: {
     SET_PDF_FILE: (state, payload) => {
       state.pdfFile = payload
