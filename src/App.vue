@@ -61,10 +61,6 @@ tr:hover td:first-child {
   cursor: pointer;
   border-left: 8px #F47F97 solid;
 }
-a {
-  text-decoration: none;
-  color: unset !important;
-}
 html {
   overflow: auto;
 }

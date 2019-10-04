@@ -9,7 +9,7 @@
                 <h3 class="headline">Logget ut</h3>
               </v-card-title>
               <v-card-text>
-                Du er logget ut. Klikk her for å logge inn igjen.
+                Du er logget ut. Klikk <a href="/">her</a> for å logge inn igjen.
               </v-card-text>
             </v-card>
           </v-flex>
@@ -21,6 +21,9 @@
 <style scoped>
 code {
   margin-right: 15px;
+}
+a {
+  color: #F47F97 !important;
 }
 p {
   font-size: 18px !important;
