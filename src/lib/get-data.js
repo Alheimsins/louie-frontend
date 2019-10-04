@@ -10,7 +10,7 @@ const instance = axios.create({
 const getData = (path, payload) => {
   const options = {
     headers: {
-      Autorization: `Bearer ${store.state.oidcStore.access_token}`
+      Authorization: `Bearer ${store.state.oidcStore.access_token}`
     }
   }
 
