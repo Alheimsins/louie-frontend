@@ -2,17 +2,21 @@ import store from '@/store'
 import axios from 'axios'
 import config from '../../config'
 
+const instance = axios.create({
+  baseURL: config.apiUrl,
+  timeout: 5000
+})
+
 const getData = (path, payload) => {
-  const token = store.state.oidcStore.access_token
   const options = {
     headers: {
-      Autorization: `Bearer ${token}`
-    },
-    method: payload ? 'post' : 'get',
-    url: config.apiUrl + path,
-    data: payload
+      Autorization: `Bearer ${store.state.oidcStore.access_token}`
+    }
   }
-  return axios(options)
+
+  return payload
+    ? instance.post(path, payload, options)
+    : instance.get(path, options)
 }
 
 export default getData
