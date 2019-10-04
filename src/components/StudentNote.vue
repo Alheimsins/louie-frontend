@@ -24,6 +24,10 @@
       >
         <v-icon left>mdi-file-document</v-icon> Forhåndsvisning
       </v-btn>
+
+      <PreviewDialog>
+      </PreviewDialog>
+
       <v-btn
         @click="saveNote"
         text
@@ -37,6 +41,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import PreviewDialog from './PreviewDialog'
 
 export default {
   name: 'StudentNote',
@@ -70,6 +75,9 @@ export default {
       }
     },
     ...mapState(['student'])
+  },
+  components: {
+    PreviewDialog
   },
   watch: {
     studentDialogVisable () {
