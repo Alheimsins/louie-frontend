@@ -21,6 +21,7 @@
                   Id token expires {{ new Date(oidcIdTokenExp).toISOString() }}
                 </p>
                 <textarea readonly style="width:100%;height: 200px;font-family: monospace;" v-model="oidcIdToken"></textarea>
+                <textarea readonly style="width:100%;height: 200px;font-family: monospace;" v-model="oidcAccessToken"></textarea>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -46,6 +47,7 @@ export default {
       'oidcIsAuthenticated',
       'oidcAuthenticationIsChecked',
       'oidcUser',
+      'oidcAccessToken',
       'oidcIdToken',
       'oidcIdTokenExp'
     ]),

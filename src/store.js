@@ -40,6 +40,7 @@ export default new Vuex.Store({
     },
     SET_STUDENT_DIALOG: (state, payload) => {
       state.studentDialog = payload
+      if (!payload) state.student = {}
     },
     SET_STUDENT: (state, payload) => {
       state.student = payload
