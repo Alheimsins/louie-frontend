@@ -75,8 +75,8 @@
           </v-btn>
         </template>
         <v-card>
-          <v-list class="pa-3">
-            <v-list-item-group>
+          <v-list class="pa-3" flat>
+            <v-list-item-group color="secondary">
 
               <v-list-item>
                 <v-list-item-icon>
@@ -128,7 +128,6 @@ export default {
   computed: mapGetters('oidcStore', ['oidcIsAuthenticated', 'oidcUser'])
 }
 </script>
-
 
 <style scoped>
 a {

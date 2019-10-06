@@ -2,6 +2,7 @@
   <v-dialog
     max-width="800"
     v-model="studentDialogVisable"
+    :fullscreen="$vuetify.breakpoint.xsOnly"
   >
     <v-card
       color="secondary"
@@ -19,7 +20,6 @@
             <v-avatar
               size="220"
               tile
-              class="rounded-card"
             >
               <v-img
                 :src="student.imageUrl || require('@/assets/no-picture.png')"
@@ -83,16 +83,17 @@
               color="accent"
               light
               v-model="tab"
+              active-class="tab-active"
             >
 
               <!-- Varsel tab -->
               <v-tab href="#tab-1">Varsel</v-tab>
 
               <!-- Logg tab -->
-              <v-tab href="#tab-2">Samtale</v-tab>
+              <v-tab href="#tab-2" v-if="features.interview">Samtale</v-tab>
 
               <!-- Notat tab -->
-              <v-tab href="#tab-3">Notat</v-tab>
+              <v-tab href="#tab-3" v-if="features.notes">Notat</v-tab>
 
               <!-- Logg tab -->
               <v-tab href="#tab-4">Logg</v-tab>
@@ -131,11 +132,16 @@ import WarningForm from './WarningForm'
 import StudentLog from './StudentLog'
 import StudentInterview from './StudentInterview'
 import StudentNote from './StudentNote'
+import config from '../../config'
 
 export default {
   name: 'StudentDialog',
   data: () => ({
-    tab: 'tab-1'
+    tab: 'tab-1',
+    features: {
+      notes: config.features.notes,
+      interview: config.features.interview
+    }
   }),
   computed: {
     studentDialogVisable: {
@@ -167,12 +173,6 @@ export default {
 </script>
 
 <style>
-.theme--dark.v-label {
-  color: white !important;
-}
-.rounded-card {
-  border-radius: 10px;
-}
 .v-list-item {
   padding: 0;
 }
@@ -181,7 +181,7 @@ export default {
   text-transform: uppercase;
   font-family: 'Nunito'
 }
-.theme--light.v-tabs > .v-tabs-bar {
-  background-color: transparent !important;
+.tab-active {
+  background: #edf8f6;
 }
 </style>

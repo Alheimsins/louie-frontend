@@ -32,10 +32,10 @@ export default {
     warning: process.env.VUE_APP_LOUIE_COLOR_WARNING || '#FFC107'
   },
   features: {
-    warning: process.env.VUE_APP_LOUIE_COLOR_WARNING || true,
-    notes: process.env.VUE_APP_LOUIE_COLOR_NOTES || true,
-    interview: process.env.VUE_APP_LOUIE_COLOR_INTERVIEW || true,
-    insight: process.env.VUE_APP_LOUIE_COLOR_INSIGHT || true
+    warning: process.env.VUE_APP_LOUIE_COLOR_WARNING !== 'false',
+    notes: process.env.VUE_APP_LOUIE_COLOR_NOTES !== 'false',
+    interview: process.env.VUE_APP_LOUIE_COLOR_INTERVIEW !== 'false',
+    insight: process.env.VUE_APP_LOUIE_COLOR_INSIGHT !== 'false'
   },
   ...getAuthConfig(process.env.VUE_APP_LOUIE_PROD_URL)
 }
