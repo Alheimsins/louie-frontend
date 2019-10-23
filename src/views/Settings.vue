@@ -9,19 +9,61 @@
                 <h3 class="headline">Innstillinger</h3>
               </v-card-title>
               <v-card-text>
-                <p>Grupper</p>
-                <p>{{ groups.map(({ gid }) => gid).join(', ')}}</p>
-                <p>
-                  Browser version:  {{ browser }}
-                <p>
-                  You are signed in as:
-                </p>
-                <div v-html="oidcUser"></div>
-                <p>
-                  Id token expires {{ new Date(oidcIdTokenExp).toISOString() }}
-                </p>
-                <textarea readonly style="width:100%;height: 200px;font-family: monospace;" v-model="oidcIdToken"></textarea>
-                <textarea readonly style="width:100%;height: 200px;font-family: monospace;" v-model="oidcAccessToken"></textarea>
+                <v-row>
+                  <v-col cols="12">
+                    <v-text-field
+                      prepend-icon="mdi-account"
+                      :value="oidcUser.name"
+                      label="Navn"
+                      filled
+                      disabled
+                    >
+                    </v-text-field>
+
+                    <v-text-field
+                      prepend-icon="mdi-email"
+                      :value="oidcUser.email"
+                      label="E-post"
+                      filled
+                      disabled
+                    >
+                    </v-text-field>
+
+                    <v-select
+                      prepend-icon="mdi-account-multiple"
+                      :items="contactGroupNames"
+                      :value="contactGroupNames"
+                      label="Kontaktklasser"
+                      no-data-text="Ingen"
+                      chips
+                      filled
+                      multiple
+                    >
+                    </v-select>
+
+                    <v-select
+                      prepend-icon="mdi-account-multiple"
+                      :items="groupNames"
+                      :value="groupNames"
+                      label="Klasser"
+                      no-data-text="Ingen"
+                      chips
+                      filled
+                      multiple
+                    >
+                    </v-select>
+
+                    <v-text-field
+                      prepend-icon="mdi-earth"
+                      :value="browser"
+                      label="Nettleser"
+                      filled
+                      disabled
+                    >
+                    </v-text-field>
+
+                  </v-col>
+                </v-row>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -32,7 +74,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Settings',
@@ -43,15 +85,8 @@ export default {
     this.$store.dispatch('GET_GROUPS')
   },
   computed: {
-    ...mapGetters('oidcStore', [
-      'oidcIsAuthenticated',
-      'oidcAuthenticationIsChecked',
-      'oidcUser',
-      'oidcAccessToken',
-      'oidcIdToken',
-      'oidcIdTokenExp'
-    ]),
-    ...mapState(['groups'])
+    ...mapGetters('oidcStore', ['oidcUser']),
+    ...mapGetters(['groupNames', 'contactGroupNames'])
   }
 }
 </script>

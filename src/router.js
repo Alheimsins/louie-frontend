@@ -6,6 +6,7 @@ import Stats from './views/Stats.vue'
 import Settings from './views/Settings.vue'
 import OidcCallback from './views/OidcCallback.vue'
 import OidcCallbackError from './views/OidcCallbackError.vue'
+import pageNotFound from './views/404.vue'
 import { vuexOidcCreateRouterMiddleware } from 'vuex-oidc'
 import store from '@/store'
 
@@ -47,6 +48,14 @@ const router = new Router({
       path: '/oidc-callback-error', // Needs to match redirect_uri in you oidcSettings
       name: 'oidcCallbackError',
       component: OidcCallbackError,
+      meta: {
+        isPublic: true
+      }
+    },
+    {
+      path: '*',
+      name: 'pageNotFound',
+      component: pageNotFound,
       meta: {
         isPublic: true
       }

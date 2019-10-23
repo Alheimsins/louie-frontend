@@ -1,6 +1,6 @@
 {
-  "name": "louie-frontend",
-  "short_name": "louie-frontend",
+  "name": "louie",
+  "short_name": "louie",
   "icons": [
     {
       "src": "./img/icons/android-icon-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#A3DECE",
   "theme_color": "#F47F97"

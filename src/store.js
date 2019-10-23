@@ -28,7 +28,13 @@ export default new Vuex.Store({
       /* eslint-env browser */
       if (!pdfFile) return
       return new Uint8Array(atob(pdfFile).split('').map(c => c.charCodeAt(0)))
-    }
+    },
+    groupNames: ({ groups }) => groups
+      .filter(group => group.type === 'class')
+      .map(({ name, gid }) => `${name} (${gid})`),
+    contactGroupNames: ({ groups }) => groups
+      .filter(group => group.type === 'main')
+      .map(({ name, gid }) => `${name} (${gid})`)
   },
   mutations: {
     SET_PDF_FILE: (state, payload) => {

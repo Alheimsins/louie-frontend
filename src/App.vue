@@ -64,4 +64,7 @@ tr:hover td:first-child {
 html {
   overflow: auto;
 }
+#app p a {
+  color: #f47f97;
+}
 </style>

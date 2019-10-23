@@ -84,6 +84,7 @@
               light
               v-model="tab"
               active-class="tab-active"
+              show-arrows
             >
 
               <!-- Varsel tab -->

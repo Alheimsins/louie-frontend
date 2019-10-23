@@ -12,8 +12,8 @@ export default new Vuetify({
   },
   theme: {
     themes: {
-      light: { ...config.colors },
-      dark: { ...config.colors }
+      light: config.colors,
+      dark: config.colors
     }
   }
 })

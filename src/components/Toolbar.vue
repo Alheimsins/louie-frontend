@@ -97,16 +97,16 @@
                 <v-list-item>
                   <v-list-item-icon>
                     <v-icon>mdi-settings</v-icon>
-                    <v-list-item-title>&nbsp; Innstillinger</v-list-item-title>
                   </v-list-item-icon>
+                  <v-list-item-title>Innstillinger</v-list-item-title>
                 </v-list-item>
               </router-link>
 
               <v-list-item @click="removeUser">
                 <v-list-item-icon>
                   <v-icon color="red">mdi-power</v-icon>
-                  <v-list-item-title>&nbsp; Logg ut</v-list-item-title>
                 </v-list-item-icon>
+                <v-list-item-title>Logg ut</v-list-item-title>
               </v-list-item>
 
             </v-list-item-group>

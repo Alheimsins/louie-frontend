@@ -6,15 +6,15 @@
           <v-flex xs12>
             <v-card>
               <v-card-title primary-title>
-                <h3 class="headline">Statistikk</h3>
+                <h3 class="headline">Ikke funnet</h3>
               </v-card-title>
               <v-card-text>
-                <v-sparkline
-                  :value="value"
-                  :labels="labels"
-                  type="bar"
-                  auto-line-width
-                ></v-sparkline>
+                <p>
+                  Siden ble ikke funnet.
+                </p>
+                <p>
+                  Vennligst kontroller adressen eller gå til <a href="/">hjem</a> siden.
+                </p>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -24,25 +24,9 @@
   </v-container>
 </template>
 
-<script>
-export default {
-  name: 'stats',
-  data: () => ({
-    value: [9, 2, 5],
-    labels: ['test1', 'test2', 'test3']
-  })
-}
-</script>
-
 <style scoped>
-code {
-  margin-right: 15px;
-}
 p {
   font-size: 18px !important;
-  color: black;
-}
-h5, h3 {
-  color: black;
+  color: #3e3e3e;
 }
 </style>
