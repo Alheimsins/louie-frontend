@@ -32,7 +32,7 @@
   "dependencies": {
     "axios": "0.25.0",
     "babel-polyfill": "6.26.0",
-    "core-js": "3.20.3",
+    "core-js": "3.38.1",
     "oidc-client": "1.11.5",
     "register-service-worker": "1.7.2",
     "vue": "2.6.14",
